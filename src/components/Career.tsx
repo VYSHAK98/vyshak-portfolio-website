@@ -21,10 +21,12 @@ const Career = () => {
               <h3>PRESENT</h3>
             </div>
             <p>
-              Leading frontend development for an airport revenue management
-              system using React.js and TypeScript. Building reusable UI components
-              with Next.js, Material UI, Tailwind CSS, and React Router 7. Integrating
-              payment gateways, ArcGIS APIs, and mentoring junior developers.
+              Leading frontend development of an enterprise Airport Revenue
+              Management Platform using React.js and TypeScript for US-based clients.
+              Integrated ArcGIS Maps for geospatial visualization and map-based asset
+              allocation. Currently developing an AI Agent Platform (AI-powered calls,
+              SMS, and email campaigns), driving frontend architecture and mentoring
+              junior developers.
             </p>
           </div>
           <div className="career-info-box">

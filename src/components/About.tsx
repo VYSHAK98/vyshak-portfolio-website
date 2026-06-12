@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          I am a Frontend Developer with 3 years of experience building scalable, high-performance web applications using React.js, Next.js, and TypeScript. Currently, I lead frontend development for an airport revenue management system, focusing on modular architecture, reusable components, performance optimization, and seamless third-party integrations (ArcGIS APIs, Payment Gateways).
+          Frontend Developer with 3+ years of experience building and scaling enterprise applications across Aviation, EdTech, FinTech, eCommerce, and AI domains. Currently leading frontend development for airport revenue management and AI agent platforms using React.js and TypeScript. Proven expertise in frontend architecture, reusable component design, performance optimization, geospatial integrations (ArcGIS), and modern UI frameworks, complemented by hands-on experience with Node.js, PostgreSQL, and API development.
         </p>
       </div>
     </div>
