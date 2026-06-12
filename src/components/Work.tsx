@@ -8,6 +8,12 @@ gsap.registerPlugin(useGSAP);
 
 const projects = [
   {
+    title: "AI Agent Platform",
+    category: "Conversational AI Platform",
+    tools: "React.js, TypeScript, Voice Calls, SMS & Email Campaigns, Agent Templates, Knowledge Bases, Workflow Automation, Multi-tenant",
+    image: "/images/work/ai-agent.svg",
+  },
+  {
     title: "Airport Revenue Management",
     category: "Enterprise Fintech App",
     tools: "Next.js, React.js, TypeScript, Material UI, Tailwind CSS, React Router 7, Payment Gateways, ArcGIS APIs",
