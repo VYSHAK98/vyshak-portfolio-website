@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1408"/>
+      <stop offset="1" stop-color="#0b080c"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#bg)"/>
+  <circle cx="34" cy="34" r="6" fill="#fbbf24"/>
+  <circle cx="56" cy="34" r="6" fill="#ffffff" opacity="0.22"/>
+  <circle cx="78" cy="34" r="6" fill="#ffffff" opacity="0.22"/>
+  <rect x="150" y="26" width="320" height="16" rx="8" fill="#ffffff" opacity="0.06"/>
+  <line x1="0" y1="60" x2="600" y2="60" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="44" y="116" fill="#fbbf24" font-size="14" letter-spacing="3" font-weight="600">EDTECH PLATFORM</text>
+  <text x="44" y="162" fill="#eae5ec" font-size="34" font-weight="700">
+    <tspan x="44">Learning Management</tspan>
+    <tspan x="44" dy="42">System (LMS)</tspan>
+  </text>
+  <g transform="translate(398,222)">
+    <polygon points="90,18 178,58 90,98 2,58" fill="#fbbf24" opacity="0.9"/>
+    <path d="M38,76 v34 a52,20 0 0 0 104,0 v-34" fill="#fbbf24" opacity="0.35"/>
+    <line x1="178" y1="58" x2="178" y2="118" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="178" cy="124" r="7" fill="#fbbf24"/>
+  </g>
+</svg>
