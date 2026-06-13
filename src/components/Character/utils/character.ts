@@ -28,7 +28,26 @@ const setCharacter = (
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
-            const bodyTint = new THREE.Color("#c2a4ff");
+            // Recolor the character per body part. The skin (face, ears,
+            // neck, hands) and clothes share a single material, so we colour
+            // by mesh name and clone the material per mesh. Hair and eyebrows
+            // (separate dark materials) and the textured eyes are left as-is.
+            const SKIN = new THREE.Color("#d99e6c");
+            const CLOTHES = new THREE.Color("#234d33"); // dark green
+            const SHOES = new THREE.Color("#191919");
+            const pickColor = (name: string): THREE.Color | null => {
+              const n = name.toLowerCase();
+              if (n.includes("shirt") || n.includes("pant")) return CLOTHES;
+              if (n.includes("shoe") || n.includes("sole")) return SHOES;
+              if (
+                n.includes("ear") ||
+                n.includes("hand") ||
+                n.includes("neck") ||
+                n.includes("plane.007") // the head/face mesh
+              )
+                return SKIN;
+              return null;
+            };
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
@@ -36,29 +55,30 @@ const setCharacter = (
                 child.receiveShadow = true;
                 mesh.frustumCulled = true;
 
-                // Tint the character body with the site's purple accent. Only
-                // skinned meshes (the rigged figure) are recolored; the desk,
-                // keyboard and monitor are static meshes and stay as-is.
-                // Materials are cloned so shared ones aren't recolored on the
-                // static props. Textured parts (eyes) and near-black parts
-                // (eyebrows) are left untouched so they stay natural.
+                // Only recolor skinned meshes (the rigged figure) — the desk,
+                // keyboard and monitor are static and stay as-is. Clone the
+                // material so shared ones aren't recolored on static props, and
+                // skip textured parts (eyes) and near-black parts (eyebrows).
                 if (child.isSkinnedMesh) {
-                  const mats = Array.isArray(mesh.material)
-                    ? mesh.material
-                    : [mesh.material];
-                  const tinted = mats.map((m: any) => {
-                    if (!m || m.map) return m;
-                    const lum = m.color
-                      ? m.color.r + m.color.g + m.color.b
-                      : 0;
-                    if (lum < 0.6) return m;
-                    const cloned = m.clone();
-                    cloned.color = bodyTint.clone();
-                    return cloned;
-                  });
-                  mesh.material = Array.isArray(mesh.material)
-                    ? tinted
-                    : tinted[0];
+                  const target = pickColor(child.name);
+                  if (target) {
+                    const mats = Array.isArray(mesh.material)
+                      ? mesh.material
+                      : [mesh.material];
+                    const recolored = mats.map((m: any) => {
+                      if (!m || m.map) return m;
+                      const lum = m.color
+                        ? m.color.r + m.color.g + m.color.b
+                        : 0;
+                      if (lum < 0.6) return m;
+                      const cloned = m.clone();
+                      cloned.color = target.clone();
+                      return cloned;
+                    });
+                    mesh.material = Array.isArray(mesh.material)
+                      ? recolored
+                      : recolored[0];
+                  }
                 }
               }
             });
