@@ -27,15 +27,36 @@ const Scene = () => {
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
 
-      const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true,
-      });
+      let renderer: THREE.WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+      } catch (err) {
+        // WebGL may be unavailable (no GPU, hardware acceleration off, or the
+        // browser blocked context creation). Don't crash the whole site — just
+        // skip the 3D character and let everything else finish loading.
+        console.warn(
+          "3D character scene disabled — WebGL context unavailable:",
+          err
+        );
+        setLoading(100);
+        return;
+      }
       renderer.setSize(container.width, container.height);
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
+
+      // Handle GPU context loss gracefully so a transient loss doesn't throw
+      // uncaught and cascade into the browser blocking further contexts.
+      renderer.domElement.addEventListener(
+        "webglcontextlost",
+        (e) => e.preventDefault(),
+        false
+      );
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
       camera.position.z = 10;
