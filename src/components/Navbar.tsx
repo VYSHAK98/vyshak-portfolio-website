@@ -15,6 +15,9 @@ const Navbar = () => {
       content: "#smooth-content",
       smooth: 1.7,
       speed: 1.7,
+      // Smooth touch scrolling too, so the pinned horizontal Work scroll is as
+      // smooth on mobile as on desktop instead of jittering on native touch.
+      smoothTouch: 0.1,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
