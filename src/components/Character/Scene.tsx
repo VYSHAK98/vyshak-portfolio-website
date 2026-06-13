@@ -151,6 +151,10 @@ const Scene = () => {
         clearTimeout(debounce);
         scene.clear();
         renderer.dispose();
+        // Actually release the WebGL context (dispose() alone keeps it
+        // allocated). Without this, contexts leak across remounts/HMR until the
+        // browser blocks all further WebGL on the page.
+        renderer.forceContextLoss();
         window.removeEventListener("resize", () =>
           handleResize(renderer, camera, canvasDiv, character!)
         );
