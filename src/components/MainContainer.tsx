@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import TechStackMobile from "./TechStackMobile";
 import ErrorBoundary from "./ErrorBoundary";
 import setSplitText from "./utils/splitText";
 
@@ -44,19 +45,13 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <WhatIDo />
             <Career />
             <Work />
-            {isDesktopView && (
-              <ErrorBoundary
-                fallback={
-                  <div className="techstack">
-                    <h2> My Techstack</h2>
-                  </div>
-                }
-              >
-                <Suspense fallback={<div>Loading....</div>}>
-                  <TechStack />
-                </Suspense>
-              </ErrorBoundary>
-            )}
+            {/* 3D tech stack on every viewport; fall back to the lightweight
+                icon grid if a device's WebGL can't initialize. */}
+            <ErrorBoundary fallback={<TechStackMobile />}>
+              <Suspense fallback={<div>Loading....</div>}>
+                <TechStack />
+              </Suspense>
+            </ErrorBoundary>
             <Contact />
           </div>
         </div>
