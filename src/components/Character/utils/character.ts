@@ -33,17 +33,19 @@ const setCharacter = (
             // by mesh name and clone the material per mesh. Hair and eyebrows
             // (separate dark materials) and the textured eyes are left as-is.
             const SKIN = new THREE.Color("#d99e6c");
-            const CLOTHES = new THREE.Color("#234d33"); // dark green
+            const CLOTHES = new THREE.Color("#4a3a7a"); // deep purple, matches scene
             const SHOES = new THREE.Color("#191919");
             const pickColor = (name: string): THREE.Color | null => {
-              const n = name.toLowerCase();
+              // GLTFLoader strips dots from node names ("Plane.007" -> "Plane007"),
+              // so normalize before matching.
+              const n = name.toLowerCase().replace(/[^a-z0-9]/g, "");
               if (n.includes("shirt") || n.includes("pant")) return CLOTHES;
               if (n.includes("shoe") || n.includes("sole")) return SHOES;
               if (
                 n.includes("ear") ||
                 n.includes("hand") ||
                 n.includes("neck") ||
-                n.includes("plane.007") // the head/face mesh
+                n.includes("plane007") // the head/face mesh
               )
                 return SKIN;
               return null;
