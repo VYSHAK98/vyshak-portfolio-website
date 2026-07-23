@@ -2,7 +2,7 @@ import "./styles/Career.css";
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <section className="career-section section-container">
       <div className="career-container">
         <h2>
           My career <span>&</span>
@@ -87,7 +87,7 @@ const Career = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

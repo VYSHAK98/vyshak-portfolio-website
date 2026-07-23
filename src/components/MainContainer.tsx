@@ -39,7 +39,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       {isDesktopView && children}
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <div className="container-main">
+          <main className="container-main">
             <Landing>{!isDesktopView && children}</Landing>
             <About />
             <WhatIDo />
@@ -53,7 +53,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
               </Suspense>
             </ErrorBoundary>
             <Contact />
-          </div>
+          </main>
         </div>
       </div>
     </div>

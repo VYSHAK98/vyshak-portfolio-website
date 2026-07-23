@@ -92,7 +92,7 @@ const Work = () => {
   };
 }, []);
   return (
-    <div className="work-section" id="work">
+    <section className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
           My <span>Work</span>
@@ -117,7 +117,7 @@ const Work = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
