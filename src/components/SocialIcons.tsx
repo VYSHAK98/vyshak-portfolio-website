@@ -58,22 +58,12 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a
-            href="https://github.com/VYSHAK98"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Vyshak Harikumar on GitHub"
-          >
+          <a href="https://github.com/VYSHAK98" target="_blank">
             <FaGithub />
           </a>
         </span>
         <span>
-          <a
-            href="https://www.linkedin.com/in/vyshak-harikumar98"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Vyshak Harikumar on LinkedIn"
-          >
+          <a href="https://www.linkedin.com/in/vyshak-harikumar98" target="_blank">
             <FaLinkedinIn />
           </a>
         </span>

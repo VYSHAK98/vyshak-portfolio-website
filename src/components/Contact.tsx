@@ -3,7 +3,7 @@ import "./styles/Contact.css";
 
 const Contact = () => {
   return (
-    <footer className="contact-section section-container" id="contact">
+    <div className="contact-section section-container" id="contact">
       <div className="contact-container">
         <h3>Contact</h3>
         <div className="contact-flex">
@@ -26,7 +26,6 @@ const Contact = () => {
             <a
               href="https://github.com/VYSHAK98"
               target="_blank"
-              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
             >
@@ -35,7 +34,6 @@ const Contact = () => {
             <a
               href="https://www.linkedin.com/in/vyshak-harikumar98"
               target="_blank"
-              rel="noopener noreferrer"
               data-cursor="disable"
               className="contact-social"
             >
@@ -52,7 +50,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 

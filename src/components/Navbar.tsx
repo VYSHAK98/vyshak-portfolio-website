@@ -44,7 +44,7 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <header className="header">
+      <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
           VYSHAK
         </a>
@@ -55,7 +55,6 @@ const Navbar = () => {
         >
           vyshakharikumar98@gmail.com
         </a>
-        <nav aria-label="Primary">
         <ul>
           <li>
             <a data-href="#about" href="#about">
@@ -73,8 +72,7 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-        </nav>
-      </header>
+      </div>
 
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
