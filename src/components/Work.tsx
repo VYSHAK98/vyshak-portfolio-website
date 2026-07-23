@@ -56,15 +56,18 @@ const Work = () => {
   let translateX: number = 0;
 
   function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
+    const boxes = document.getElementsByClassName("work-box");
+    const container = document.querySelector(".work-container");
+    if (!boxes.length || !container) return;
+    const lastBoxRight =
+      boxes[boxes.length - 1].getBoundingClientRect().right;
+    const containerRight = container.getBoundingClientRect().right;
+    const padding: number =
+      parseInt(window.getComputedStyle(boxes[0] as HTMLElement).padding) / 2;
+    // Travel far enough for the last card's right edge to clear the container's
+    // right edge (plus a little breathing room), so the final card is fully in
+    // view before the pinned section releases into vertical scroll.
+    translateX = lastBoxRight - containerRight + padding;
   }
 
   setTranslateX();
