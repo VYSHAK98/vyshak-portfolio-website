@@ -1,0 +1,108 @@
+.progressTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 90;
+  pointer-events: none;
+}
+
+.progressBar {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), rgba(79, 140, 255, 0.35));
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px min(48px, 5vw);
+  background: linear-gradient(to bottom, var(--bg) 0, rgba(5, 5, 5, 0.92) 62%, rgba(5, 5, 5, 0) 100%);
+  animation: vFadeIn 1s ease 3.6s both;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+}
+.logoText {
+  font: 500 13px var(--font-mono);
+  letter-spacing: 0.16em;
+}
+.logoDot {
+  color: var(--accent);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink {
+  font: 500 11px var(--font-body);
+  letter-spacing: 0.14em;
+  color: var(--text-secondary);
+}
+
+.soundBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  transition:
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+.soundBtn:hover {
+  border-color: rgba(79, 140, 255, 0.5);
+  color: var(--text);
+}
+
+.soundDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+
+.soundLabel {
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.16em;
+}
+
+.talkPill {
+  font: 600 11.5px var(--font-body);
+  color: var(--bg);
+  background: var(--text);
+  padding: 9px 18px;
+  border-radius: 20px;
+  transition: box-shadow 0.35s ease;
+}
+.talkPill:hover {
+  box-shadow: 0 10px 26px -10px rgba(255, 255, 255, 0.55);
+  color: var(--bg);
+}
+
+@media (max-width: 720px) {
+  .links {
+    gap: 14px;
+  }
+  .navLink {
+    display: none;
+  }
+}

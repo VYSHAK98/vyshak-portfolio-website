@@ -279,6 +279,16 @@ button {
   }
 }
 
+/* shared pulsing accent marker (hero "open to work", about "currently at", experience orb) */
+.uiPulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.9);
+  animation: vPulse 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

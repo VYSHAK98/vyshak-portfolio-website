@@ -5,6 +5,8 @@ import styles from "./page.module.css";
 import { Engine } from "@/lib/engine";
 import Loader from "@/components/Loader/Loader";
 import Cursor from "@/components/Cursor/Cursor";
+import Nav from "@/components/Nav/Nav";
+import Hero from "@/components/Hero/Hero";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -22,11 +24,8 @@ export default function Home() {
 
   return (
     <div ref={rootRef} className={styles.root}>
-      <main>
-        <p style={{ padding: "160px 48px", color: "var(--text-secondary)" }}>
-          Portfolio rebuild in progress — sections land one at a time.
-        </p>
-      </main>
+      <Nav />
+      <Hero />
 
       <Loader />
       <Cursor />
