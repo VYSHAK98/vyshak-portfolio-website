@@ -9,6 +9,7 @@ import Nav from "@/components/Nav/Nav";
 import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
 import Numbers from "@/components/Numbers/Numbers";
+import Experience from "@/components/Experience/Experience";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -30,6 +31,7 @@ export default function Home() {
       <Hero />
       <About />
       <Numbers />
+      <Experience />
 
       <Loader />
       <Cursor />

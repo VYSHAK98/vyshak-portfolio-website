@@ -81,6 +81,7 @@ export class Engine {
     this.initCursor();
     this.initInteractive();
     this.initStickyCols();
+    this.initExperienceScroll();
     this.loop();
 
     document.body.style.overflow = "hidden";
@@ -314,6 +315,71 @@ export class Engine {
     );
     this.root.querySelectorAll<HTMLElement>("[data-marquee-row]").forEach((el) => io.observe(el));
     this.cleanups.push(() => io.disconnect());
+  }
+
+  /**
+   * Career journey panel: the active row and the glowing orb are both
+   * derived from the SAME scroll fraction of the inner `[data-exp-scroll]`
+   * container. Deriving the active index any other way (row rects,
+   * offsetTop) lets the row highlight and the orb desync — keep this
+   * single source of truth even when touching this method.
+   */
+  private initExperienceScroll() {
+    const root = this.root;
+    const scroller = root.querySelector<HTMLElement>("[data-exp-scroll]");
+    if (!scroller) return;
+    const rows = [...scroller.querySelectorAll<HTMLElement>("[data-exp-row]")].map((row) => ({
+      row,
+      name: row.querySelector<HTMLElement>("[data-exp-name]"),
+      date: row.querySelector<HTMLElement>("[data-exp-date]"),
+      desc: row.querySelector<HTMLElement>("[data-exp-desc]"),
+      pills: row.querySelector<HTMLElement>("[data-exp-pills]"),
+    }));
+    const ticks = [...root.querySelectorAll<HTMLElement>("[data-exp-tick]")];
+    const fill = root.querySelector<HTMLElement>("[data-exp-fill]");
+    const orb = root.querySelector<HTMLElement>("[data-exp-orb]");
+    let last = -1,
+      ticking = false;
+    const apply = () => {
+      ticking = false;
+      const max = scroller.scrollHeight - scroller.clientHeight;
+      const pct = max > 0 ? Math.max(0, Math.min(1, scroller.scrollTop / max)) : 0;
+      const p = Math.round(pct * 100);
+      if (fill) fill.style.height = p + "%";
+      if (orb) orb.style.top = p + "%";
+      // active row derives from the same fraction that drives the orb, so the two can never desync
+      const idx = rows.length > 1 ? Math.min(rows.length - 1, Math.round(pct * (rows.length - 1))) : 0;
+      if (idx === last) return;
+      last = idx;
+      rows.forEach((it, i) => {
+        const on = i === idx;
+        it.row.style.opacity = on ? "1" : i < idx ? ".6" : ".4";
+        if (it.name) {
+          it.name.style.color = on ? "#fff" : "#5a5a5a";
+          it.name.style.transform = on ? "scale(1.02)" : "scale(1)";
+        }
+        if (it.date) it.date.style.color = on ? "#9dbcff" : "#6b6b6b";
+        if (it.desc) it.desc.style.color = on ? "rgba(255,255,255,.78)" : "#6f6f6f";
+        if (it.pills) {
+          it.pills.style.transform = on ? "translateY(0)" : "translateY(6px)";
+          it.pills.style.opacity = on ? "1" : ".55";
+        }
+      });
+      ticks.forEach((tick, i) => {
+        const passed = i <= idx;
+        tick.style.background = passed ? "#eaf1ff" : "rgba(255,255,255,.22)";
+        tick.style.boxShadow = passed ? "0 0 8px rgba(79,140,255,.7)" : "none";
+      });
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(apply);
+      }
+    };
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    this.cleanups.push(() => scroller.removeEventListener("scroll", onScroll));
+    apply();
   }
 
   /* sticky only while the columns are genuinely side by side */
