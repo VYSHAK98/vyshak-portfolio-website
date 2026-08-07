@@ -2,9 +2,9 @@ import styles from "./Hero.module.css";
 import ParticleField from "@/components/ParticleField/ParticleField";
 
 const H1_LINES: { text: string; delay: number; dim?: boolean; last?: boolean }[] = [
-  { text: "Crafting", delay: 3.35 },
-  { text: "Modern Digital", delay: 3.46 },
-  { text: "Experiences", delay: 3.57, dim: true, last: true },
+  { text: "Where Design", delay: 3.35 },
+  { text: "Meets", delay: 3.46 },
+  { text: "Engineering", delay: 3.57, dim: true, last: true },
 ];
 
 const TECH_PILLS = [
@@ -48,8 +48,8 @@ export default function Hero() {
           </h1>
 
           <p className={`${styles.intro} anim-vRise`}>
-            Enterprise frontend architecture in React, Next.js and TypeScript — voice AI, real-time
-            transcript streaming, and platforms that carry real revenue for real businesses.
+            Building enterprise-grade React applications, AI-powered interfaces, and digital
+            experiences that are fast, scalable, and crafted with precision.
           </p>
 
           <div className={styles.pills}>
