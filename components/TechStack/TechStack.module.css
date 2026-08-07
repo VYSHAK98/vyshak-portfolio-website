@@ -1,0 +1,83 @@
+.section {
+  position: relative;
+  padding: 120px 0;
+  border-top: 1px solid var(--hairline);
+  overflow: hidden;
+}
+
+.header {
+  width: var(--content-width);
+  margin: 0 auto 50px;
+}
+
+.eyebrow {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.26em;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s var(--ease) 0.05s,
+    transform 1s var(--ease) 0.05s;
+}
+
+.row {
+  padding: 14px 0;
+  border-top: 1px solid var(--hairline);
+  overflow: hidden;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  padding-left: max(48px, calc((100% - 1280px) / 2));
+  padding-right: 40px;
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  background: linear-gradient(90deg, #050505 0, #050505 76%, rgba(5, 5, 5, 0) 100%);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation-name: vMarquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.trackReverse {
+  animation-direction: reverse;
+}
+
+.item {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 38px);
+  letter-spacing: -0.02em;
+  padding: 0 26px;
+  white-space: nowrap;
+}

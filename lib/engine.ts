@@ -82,6 +82,7 @@ export class Engine {
     this.initInteractive();
     this.initStickyCols();
     this.initExperienceScroll();
+    this.initMarquees();
     this.loop();
 
     document.body.style.overflow = "hidden";

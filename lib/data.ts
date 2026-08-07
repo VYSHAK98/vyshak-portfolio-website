@@ -4,6 +4,40 @@
  * own data (AI pipeline, work, terminal).
  */
 
+export interface MarqueeRow {
+  label: string;
+  items: string[];
+  dur: string;
+  reverse: boolean;
+}
+
+export const MARQUEE_ROWS: MarqueeRow[] = [
+  {
+    label: "FRONTEND",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Redux", "React Query", "Zustand", "Tailwind", "Material UI"],
+    dur: "38s",
+    reverse: false,
+  },
+  {
+    label: "BACKEND",
+    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST", "Zod", "WebSockets"],
+    dur: "32s",
+    reverse: true,
+  },
+  {
+    label: "AI & CLOUD",
+    items: ["Speech-to-Text", "LLM Interfaces", "Voice Capture", "AWS", "Azure", "OAuth", "JWT"],
+    dur: "36s",
+    reverse: false,
+  },
+  {
+    label: "CRAFT",
+    items: ["GSAP", "Three.js", "Framer Motion", "Lenis", "Figma", "Git", "Agile"],
+    dur: "30s",
+    reverse: true,
+  },
+];
+
 export interface Experience {
   company: string;
   role: string;
