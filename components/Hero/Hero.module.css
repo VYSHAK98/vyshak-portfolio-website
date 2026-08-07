@@ -102,7 +102,7 @@
 }
 
 .intro {
-  margin: clamp(26px, 3.4vw, 46px) 0 0;
+  margin: clamp(14px, 1.8vw, 24px) 0 0;
   max-width: 520px;
   font: 400 16px/1.72 var(--font-body);
   color: var(--text-secondary);
