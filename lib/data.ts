@@ -13,6 +13,79 @@ export interface Experience {
   stack: string[];
 }
 
+export interface Project {
+  index: string;
+  sector: string;
+  title: string;
+  shot: string;
+  role: string;
+  blurb: string;
+  statA: string;
+  statALabel: string;
+  statB: string;
+  statBLabel: string;
+  stack: string[];
+}
+
+export const PROJECTS: Project[] = [
+  {
+    index: "01",
+    sector: "AI · SAAS",
+    title: "AI Agent Platform",
+    shot: "AGENT CONSOLE — DASHBOARD",
+    role: "Frontend lead at Verveo Solutions — platform architecture, the live call console, and the Chatbot SDK the whole product speaks through.",
+    blurb:
+      "A platform that runs inbound and outbound voice, SMS and email on behalf of businesses. Agents are configured, grounded in a knowledge base, and set loose on real conversations — with a live console watching every one.",
+    statA: "4",
+    statALabel: "CHANNELS",
+    statB: "REAL-TIME",
+    statBLabel: "TRANSCRIPTS",
+    stack: ["React", "TypeScript", "Redux", "React Query", "WebSockets"],
+  },
+  {
+    index: "02",
+    sector: "AVIATION · ENTERPRISE",
+    title: "Airport Revenue Management",
+    shot: "REVENUE DASHBOARD",
+    role: "Lead frontend engineer at Verveo Solutions — empty repository to production system, owned end to end for US clients.",
+    blurb:
+      "Built from zero as lead frontend for US-based clients: lease management, rent collection, revenue tracking and the reporting layer airports run their commercial operations on.",
+    statA: "0→1",
+    statALabel: "BUILT FROM SCRATCH",
+    statB: "US",
+    statBLabel: "CLIENT BASE",
+    stack: ["React", "TypeScript", "Material UI", "REST"],
+  },
+  {
+    index: "03",
+    sector: "WEB3 · SOLANA",
+    title: "Solana Platform",
+    shot: "WALLET & TRANSACTION FLOW",
+    role: "Frontend and Node services at Digiblock Network Solutions — the full surface, plus the component library the team built inside.",
+    blurb:
+      "An end-to-end Solana product — Next.js interface, Node services behind it. Wallet-aware flows, transaction state and on-chain data presented so that nothing about it feels experimental.",
+    statA: "E2E",
+    statALabel: "FRONT + BACK",
+    statB: "Next.js",
+    statBLabel: "RENDER LAYER",
+    stack: ["Next.js", "Node.js", "Express", "Solana"],
+  },
+  {
+    index: "04",
+    sector: "EDTECH · SCALE",
+    title: "Learning Management System",
+    shot: "CLASSROOM MODULE",
+    role: "Feature development and the performance pass at Navneet Toptech — complex academic logic, then making it load fast on school hardware.",
+    blurb:
+      "Used by schools across India. Complex academic business logic, dynamic content management, and a performance pass that mattered because a slow load means a stalled classroom.",
+    statA: "India",
+    statALabel: "SCHOOL NETWORK",
+    statB: "↓ LCP",
+    statBLabel: "PERF WORK",
+    stack: ["React", "Node.js", "TypeScript", "MongoDB"],
+  },
+];
+
 export interface PipelineNode {
   label: string;
   meta: string;

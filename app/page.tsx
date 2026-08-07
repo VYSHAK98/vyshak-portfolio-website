@@ -11,6 +11,7 @@ import About from "@/components/About/About";
 import Numbers from "@/components/Numbers/Numbers";
 import Experience from "@/components/Experience/Experience";
 import AiPipeline from "@/components/AiPipeline/AiPipeline";
+import Work from "@/components/Work/Work";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ export default function Home() {
       <Numbers />
       <Experience />
       <AiPipeline />
+      <Work />
 
       <Loader />
       <Cursor />
