@@ -4,6 +4,17 @@
  * own data (AI pipeline, work, terminal).
  */
 
+export const HELP: [string, string][] = [
+  ["help", "list available commands"],
+  ["whoami", "who is behind this site"],
+  ["skills", "core technical stack"],
+  ["projects", "platforms shipped"],
+  ["experience", "career timeline"],
+  ["contact", "how to reach me"],
+  ["hire", "npm run hire-vyshak"],
+  ["clear", "clear the terminal"],
+];
+
 export interface MarqueeRow {
   label: string;
   items: string[];

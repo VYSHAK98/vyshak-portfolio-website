@@ -17,9 +17,9 @@
  * those sections come online — mirroring how the reference class grew.
  */
 
+import { emitToast } from "./toast";
+
 export interface EngineCallbacks {
-  /** Called when an achievement/easter egg should show a toast. */
-  onUnlock?: (text: string) => void;
   /** Called every ~500ms while dev mode is on, with the measured FPS. */
   onFps?: (fps: number) => void;
 }
@@ -556,7 +556,7 @@ export class Engine {
   }
 
   unlock(text: string) {
-    this.callbacks.onUnlock?.(text);
+    emitToast(text);
   }
 
   /* ---------- scroll engine ---------- */
