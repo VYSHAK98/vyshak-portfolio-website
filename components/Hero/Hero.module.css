@@ -32,7 +32,7 @@
   align-items: center;
   width: var(--content-width);
   margin: 0 auto;
-  padding: 120px 0 90px;
+  padding: 120px 0 40px;
 }
 
 .inner {
@@ -117,7 +117,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: clamp(26px, 3vw, 38px);
+  margin-top: clamp(12px, 1.4vw, 18px);
 }
 .pill {
   font: 500 10px var(--font-mono);
@@ -183,14 +183,14 @@
   position: relative;
   width: var(--content-width);
   margin: 0 auto;
-  padding-bottom: 34px;
+  padding-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding-top: 18px;
+  padding-top: 12px;
   animation-duration: 1s;
   animation-timing-function: ease;
   animation-delay: 4.4s;
