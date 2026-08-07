@@ -31,6 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700,900&f[]=general-sans@400,500,600&display=swap"
           rel="stylesheet"
         />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font -- this rule targets the legacy
+            Pages Router _document.js; root layout <head> is the correct App Router place for
+            third-party font providers (Fontshare/Geist Mono) that next/font doesn't cover. */}
         <link
           href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap"
           rel="stylesheet"
