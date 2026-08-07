@@ -14,6 +14,9 @@ import AiPipeline from "@/components/AiPipeline/AiPipeline";
 import Work from "@/components/Work/Work";
 import TechStack from "@/components/TechStack/TechStack";
 import Terminal from "@/components/Terminal/Terminal";
+import Contact from "@/components/Contact/Contact";
+import Footer from "@/components/Footer/Footer";
+import ResumeButton from "@/components/ResumeButton/ResumeButton";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -40,6 +43,9 @@ export default function Home() {
       <Work />
       <TechStack />
       <Terminal />
+      <Contact />
+      <Footer />
+      <ResumeButton />
 
       <Loader />
       <Cursor />
