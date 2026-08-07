@@ -18,11 +18,7 @@
  */
 
 import { emitToast } from "./toast";
-
-export interface EngineCallbacks {
-  /** Called every ~500ms while dev mode is on, with the measured FPS. */
-  onFps?: (fps: number) => void;
-}
+import { emitDevMode, emitFps } from "./devMode";
 
 interface FieldParticle {
   x: number;
@@ -52,7 +48,6 @@ const EASE = "cubic-bezier(.16,1,.3,1)";
 
 export class Engine {
   private root: HTMLElement;
-  private callbacks: EngineCallbacks;
   private particleDensity: number;
   reduce = false;
   soundOn = false;
@@ -67,10 +62,10 @@ export class Engine {
   private frames = 0;
   private fpsT = 0;
   private cleanups: (() => void)[] = [];
+  private konami: string[] = [];
 
-  constructor(root: HTMLElement, callbacks: EngineCallbacks = {}, particleDensity = 1) {
+  constructor(root: HTMLElement, particleDensity = 1) {
     this.root = root;
-    this.callbacks = callbacks;
     this.particleDensity = particleDensity;
   }
 
@@ -83,6 +78,7 @@ export class Engine {
     this.initStickyCols();
     this.initExperienceScroll();
     this.initMarquees();
+    this.initKeys();
     this.loop();
 
     document.body.style.overflow = "hidden";
@@ -537,6 +533,23 @@ export class Engine {
     if (i) i.focus();
   }
 
+  /* ---------- easter eggs ---------- */
+  private initKeys() {
+    const code = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+    const onKeydown = (e: KeyboardEvent) => {
+      this.konami.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
+      if (this.konami.length > code.length) this.konami.shift();
+      if (this.konami.join(",") === code.join(",")) {
+        this.devMode = !this.devMode;
+        emitDevMode(this.devMode);
+        this.unlock(this.devMode ? "Konami code — dev mode on" : "Dev mode off");
+        this.konami = [];
+      }
+    };
+    addEventListener("keydown", onKeydown);
+    this.cleanups.push(() => removeEventListener("keydown", onKeydown));
+  }
+
   tick(freq: number, gain: number) {
     if (!this.soundOn) return;
     try {
@@ -669,7 +682,7 @@ export class Engine {
         this.frames++;
         if (!this.fpsT) this.fpsT = now;
         if (now - this.fpsT > 500) {
-          this.callbacks.onFps?.(Math.round((this.frames * 1000) / (now - this.fpsT)));
+          emitFps(Math.round((this.frames * 1000) / (now - this.fpsT)));
           this.frames = 0;
           this.fpsT = now;
         }

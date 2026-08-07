@@ -17,6 +17,8 @@ import Terminal from "@/components/Terminal/Terminal";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import ResumeButton from "@/components/ResumeButton/ResumeButton";
+import Toast from "@/components/Toast/Toast";
+import DevOverlay from "@/components/DevOverlay/DevOverlay";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -49,6 +51,8 @@ export default function Home() {
 
       <Loader />
       <Cursor />
+      <Toast />
+      <DevOverlay />
     </div>
   );
 }
