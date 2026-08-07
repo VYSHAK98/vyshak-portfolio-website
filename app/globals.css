@@ -38,6 +38,11 @@ body {
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
+  /* set here (not on body) so html stays the scrolling element unambiguously —
+     an overflow-x set only on body with no overflow-y can make Chrome turn
+     body into its own scroll container instead of propagating to the
+     viewport, which silently freezes window.scrollY for the rAF engine */
+  overflow-x: hidden;
 }
 
 body {
@@ -46,7 +51,6 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 ul,

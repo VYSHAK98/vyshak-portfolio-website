@@ -7,6 +7,8 @@ import Loader from "@/components/Loader/Loader";
 import Cursor from "@/components/Cursor/Cursor";
 import Nav from "@/components/Nav/Nav";
 import Hero from "@/components/Hero/Hero";
+import About from "@/components/About/About";
+import Numbers from "@/components/Numbers/Numbers";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -26,6 +28,8 @@ export default function Home() {
     <div ref={rootRef} className={styles.root}>
       <Nav />
       <Hero />
+      <About />
+      <Numbers />
 
       <Loader />
       <Cursor />
