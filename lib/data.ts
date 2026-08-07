@@ -13,6 +13,49 @@ export interface Experience {
   stack: string[];
 }
 
+export interface PipelineNode {
+  label: string;
+  meta: string;
+}
+
+export const NODES: PipelineNode[] = [
+  { label: "Voice Capture", meta: "MIC STREAM · VAD" },
+  { label: "Speech-to-Text", meta: "STREAMING STT" },
+  { label: "LLM Agent", meta: "TOOL CALLING" },
+  { label: "Knowledge Base", meta: "GROUNDED RETRIEVAL" },
+  { label: "Transcript Stream", meta: "LIVE TO CLIENT" },
+  { label: "Workflow Automation", meta: "CRM · SMS · EMAIL" },
+];
+
+export interface ScriptLine {
+  who: "AGENT" | "CALLER";
+  text: string;
+  stage: number;
+}
+
+export const SCRIPT: ScriptLine[] = [
+  { who: "AGENT", text: "Thanks for calling Northgate Aviation — this is Ava. How can I help today?", stage: 5 },
+  { who: "CALLER", text: "Hi, I need to check the rent invoice for our terminal lease.", stage: 0 },
+  { who: "AGENT", text: "Of course. Pulling up the lease record now — one moment.", stage: 3 },
+  {
+    who: "AGENT",
+    text: "Invoice #4482 was issued on the 1st for ₹2,40,000, due in eleven days. Want me to email a copy?",
+    stage: 4,
+  },
+  { who: "CALLER", text: "Yes please, and add a reminder two days before.", stage: 0 },
+  { who: "AGENT", text: "Sent, and the reminder is scheduled. Anything else I can take care of?", stage: 5 },
+];
+
+export const REPLIES = {
+  default:
+    "Good question. In production this routes to the agent with knowledge-base grounding — here it is a scripted stand-in for the real SDK.",
+  stack:
+    "The console is React and TypeScript with Redux and React Query, streaming transcripts over WebSockets, wrapped in a published Chatbot SDK.",
+  hire: "Vyshak is open to frontend and AI-interface roles. vyshakharikumar98@gmail.com is the fastest route.",
+  latency:
+    "Perceived latency is handled with optimistic UI, token streaming and interruption support — the user never waits on a spinner.",
+};
+
 export const EXPERIENCES: Experience[] = [
   {
     company: "Verveo Solutions",

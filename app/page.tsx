@@ -10,6 +10,7 @@ import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
 import Numbers from "@/components/Numbers/Numbers";
 import Experience from "@/components/Experience/Experience";
+import AiPipeline from "@/components/AiPipeline/AiPipeline";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -32,6 +33,7 @@ export default function Home() {
       <About />
       <Numbers />
       <Experience />
+      <AiPipeline />
 
       <Loader />
       <Cursor />
