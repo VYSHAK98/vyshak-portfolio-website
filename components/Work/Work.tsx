@@ -38,48 +38,47 @@ export default function Work() {
                 >
                   <div className={styles.glowBlob} style={{ background: `radial-gradient(circle,${tint.glow},transparent 70%)` }} />
 
-                  <div className={styles.copy}>
-                    <div className={styles.indexRow}>
+                  <div className={styles.topRow}>
+                    <div className={styles.indexGroup}>
                       <span className={styles.indexNum}>{p.index}</span>
                       <span className={styles.indexRule} />
                       <span className={styles.sector}>{p.sector}</span>
                     </div>
-                    <h3 className={styles.title}>{p.title}</h3>
-                    <p className={styles.blurb}>{p.blurb}</p>
-                    <div className={styles.roleBox}>
-                      <span className={styles.roleLabel}>MY ROLE</span>
-                      <span className={styles.roleText}>{p.role}</span>
-                    </div>
                     <div className={styles.stats}>
-                      <div>
+                      <div className={styles.stat}>
                         <div className={styles.statValue}>{p.statA}</div>
                         <div className={styles.statLabel}>{p.statALabel}</div>
                       </div>
-                      <div>
+                      <div className={styles.stat}>
                         <div className={styles.statValue}>{p.statB}</div>
                         <div className={styles.statLabel}>{p.statBLabel}</div>
                       </div>
                     </div>
-                    <div className={styles.pills}>
-                      {p.stack.map((t) => (
-                        <span key={t} className={styles.pill}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <div className={styles.actions}>
-                      <span data-magnetic data-cursor="OPEN" className={styles.liveDemo}>
-                        Live Demo
-                      </span>
-                      <span data-magnetic data-cursor="OPEN" className={styles.caseStudy}>
-                        Case Study
-                      </span>
-                    </div>
                   </div>
 
-                  <div className={styles.shotPanel}>
-                    <div className={styles.shotOverlay} />
-                    <span className={styles.shotLabel}>{p.shot}</span>
+                  <h3 className={styles.title}>{p.title}</h3>
+                  <p className={styles.blurb}>{p.blurb}</p>
+
+                  <div className={styles.roleBox}>
+                    <span className={styles.roleLabel}>MY ROLE</span>
+                    <span className={styles.roleText}>{p.role}</span>
+                  </div>
+
+                  <div className={styles.pills}>
+                    {p.stack.map((t) => (
+                      <span key={t} className={styles.pill}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={styles.actions}>
+                    <span data-magnetic data-cursor="OPEN" className={styles.liveDemo}>
+                      Live Demo
+                    </span>
+                    <span data-magnetic data-cursor="OPEN" className={styles.caseStudy}>
+                      Case Study
+                    </span>
                   </div>
                 </article>
               </div>

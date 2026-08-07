@@ -2,8 +2,6 @@ import styles from "./Experience.module.css";
 import { EXPERIENCES } from "@/lib/data";
 
 export default function Experience() {
-  const tickCount = EXPERIENCES.length;
-
   return (
     <section id="experience" data-screen-label="Experience" className={styles.section}>
       <div className={styles.inner}>
@@ -20,21 +18,11 @@ export default function Experience() {
 
         <div className={styles.layout}>
           <div className={styles.trackCol}>
-            <div className={styles.trackWrap}>
-              <div className={styles.track}>
-                <div data-exp-fill className={styles.fill} />
-                {EXPERIENCES.map((_, i) => (
-                  <div
-                    key={i}
-                    data-exp-tick
-                    className={styles.tick}
-                    style={{ top: `${(i * 100) / (tickCount - 1)}%` }}
-                  />
-                ))}
-                <div data-exp-orb className={styles.orb}>
-                  <span className={`${styles.orbCore} anim-vPulse`} />
-                  <span className={styles.orbBloom} />
-                </div>
+            <div className={styles.track}>
+              <div data-exp-fill className={styles.fill} />
+              <div data-exp-orb className={styles.orb}>
+                <span className={`${styles.orbCore} anim-vPulse`} />
+                <span className={styles.orbBloom} />
               </div>
             </div>
             <div className={styles.yearsBlock}>
@@ -45,7 +33,7 @@ export default function Experience() {
             </div>
           </div>
 
-          <div data-exp-scroll className={styles.scroller}>
+          <div data-exp-rows className={styles.rows}>
             {EXPERIENCES.map((e) => (
               <div key={e.company} data-exp-row className={styles.row}>
                 <div className={styles.rowHead}>

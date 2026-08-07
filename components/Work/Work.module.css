@@ -50,24 +50,28 @@
 
 .stack {
   position: relative;
+  max-width: min(880px, 100%);
+  margin: 0 auto;
   padding-bottom: 140px;
 }
 
 .card {
   position: sticky;
-  margin-bottom: 42px;
+  margin-bottom: 34px;
 }
 
 .article {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
     0 50px 100px -60px rgba(0, 0, 0, 1),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 22px;
+  padding: clamp(22px, 3.4vw, 34px) clamp(22px, 3.6vw, 38px);
   transform-style: preserve-3d;
 }
 
@@ -81,20 +85,19 @@
   pointer-events: none;
 }
 
-.copy {
-  flex: 1 1 440px;
-  min-width: 300px;
-  padding: 44px 46px;
-  display: flex;
-  flex-direction: column;
+.topRow {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.indexRow {
+.indexGroup {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 26px;
 }
 .indexNum {
   font: 400 10px var(--font-mono);
@@ -112,52 +115,13 @@
   color: var(--text-muted);
 }
 
-.title {
-  margin: 0 0 16px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(28px, 3vw, 42px);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-.blurb {
-  margin: 0 0 20px;
-  max-width: 430px;
-  font: 400 14.5px/1.72 var(--font-body);
-  color: var(--text-secondary);
-  text-wrap: pretty;
-}
-
-.roleBox {
-  display: flex;
-  gap: 14px;
-  margin: 0 0 26px;
-  padding: 13px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.015);
-  max-width: 430px;
-}
-.roleLabel {
-  font: 400 9.5px var(--font-mono);
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  padding-top: 3px;
-  flex: none;
-}
-.roleText {
-  font: 400 13px/1.62 var(--font-body);
-  color: #c9c9c9;
-  text-wrap: pretty;
-}
-
 .stats {
   display: flex;
   gap: 34px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+}
+.stat {
+  text-align: right;
 }
 .statValue {
   font-family: var(--font-display);
@@ -173,12 +137,52 @@
   margin-top: 4px;
 }
 
+.title {
+  position: relative;
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.blurb {
+  position: relative;
+  margin: 0;
+  font: 400 14.5px/1.72 var(--font-body);
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.roleBox {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.015);
+}
+.roleLabel {
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  padding-top: 3px;
+  flex: none;
+}
+.roleText {
+  font: 400 13px/1.62 var(--font-body);
+  color: #c9c9c9;
+  text-wrap: pretty;
+}
+
 .pills {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: auto;
-  margin-bottom: 26px;
 }
 .pill {
   font: 400 10px var(--font-mono);
@@ -189,9 +193,12 @@
 }
 
 .actions {
+  position: relative;
   display: flex;
   gap: 9px;
   flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 20px;
 }
 .liveDemo {
   font: 600 12px var(--font-body);
@@ -214,29 +221,4 @@
 }
 .caseStudy:hover {
   background: rgba(79, 140, 255, 0.12);
-}
-
-.shotPanel {
-  flex: 1 1 380px;
-  min-width: 280px;
-  position: relative;
-  background: rgba(0, 0, 0, 0.28);
-  border-left: 1px solid rgba(255, 255, 255, 0.09);
-  min-height: 380px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.038) 0 10px, transparent 10px 20px);
-}
-.shotOverlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 60% 30%, rgba(79, 140, 255, 0.13), transparent 62%);
-  pointer-events: none;
-}
-.shotLabel {
-  position: relative;
-  font: 400 9.5px var(--font-mono);
-  letter-spacing: 0.22em;
-  color: var(--text-muted);
 }

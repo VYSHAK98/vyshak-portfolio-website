@@ -76,7 +76,6 @@ export class Engine {
     this.initCursor();
     this.initInteractive();
     this.initStickyCols();
-    this.initExperienceScroll();
     this.initMarquees();
     this.initKeys();
     this.loop();
@@ -315,42 +314,66 @@ export class Engine {
   }
 
   /**
-   * Career journey panel: the active row and the glowing orb are both
-   * derived from the SAME scroll fraction of the inner `[data-exp-scroll]`
-   * container. Deriving the active index any other way (row rects,
-   * offsetTop) lets the row highlight and the orb desync — keep this
-   * single source of truth even when touching this method.
+   * Career journey panel: page-scroll driven (no inner scroll container).
+   * Progress is where a fixed viewport "focus line" (50% of innerHeight)
+   * falls across the rows column's own bounding rect — that single number
+   * drives the fill height, the orb's top, AND which row counts as active
+   * (nearest row-center to the same focus line). One source of truth, so
+   * the orb and the highlighted row can't desync. Read once per frame in
+   * Engine.loop()'s shared read phase, written in its write phase —
+   * folded into that loop's step() rather than its own listener, since
+   * this now reads page scroll like everything else that loop drives.
    */
-  private initExperienceScroll() {
+  private prepExperience(): {
+    read: () => { p: number; idx: number } | null;
+    write: (v: { p: number; idx: number }) => void;
+  } | null {
     const root = this.root;
-    const scroller = root.querySelector<HTMLElement>("[data-exp-scroll]");
-    if (!scroller) return;
-    const rows = [...scroller.querySelectorAll<HTMLElement>("[data-exp-row]")].map((row) => ({
+    const rowsCol = root.querySelector<HTMLElement>("[data-exp-rows]");
+    if (!rowsCol) return null;
+    const rows = [...rowsCol.querySelectorAll<HTMLElement>("[data-exp-row]")].map((row) => ({
       row,
       name: row.querySelector<HTMLElement>("[data-exp-name]"),
       date: row.querySelector<HTMLElement>("[data-exp-date]"),
       desc: row.querySelector<HTMLElement>("[data-exp-desc]"),
       pills: row.querySelector<HTMLElement>("[data-exp-pills]"),
     }));
-    const ticks = [...root.querySelectorAll<HTMLElement>("[data-exp-tick]")];
     const fill = root.querySelector<HTMLElement>("[data-exp-fill]");
     const orb = root.querySelector<HTMLElement>("[data-exp-orb]");
-    let last = -1,
-      ticking = false;
-    const apply = () => {
-      ticking = false;
-      const max = scroller.scrollHeight - scroller.clientHeight;
-      const pct = max > 0 ? Math.max(0, Math.min(1, scroller.scrollTop / max)) : 0;
-      const p = Math.round(pct * 100);
-      if (fill) fill.style.height = p + "%";
-      if (orb) orb.style.top = p + "%";
-      // active row derives from the same fraction that drives the orb, so the two can never desync
-      const idx = rows.length > 1 ? Math.min(rows.length - 1, Math.round(pct * (rows.length - 1))) : 0;
-      if (idx === last) return;
-      last = idx;
+    let lastP = -1,
+      lastIdx = -1;
+
+    const read = () => {
+      const r = rowsCol.getBoundingClientRect();
+      const focus = innerHeight * 0.5;
+      const raw = r.height > 0 ? (focus - r.top) / r.height : 0;
+      const p = Math.round(Math.max(0, Math.min(1, raw)) * 100);
+      let idx = 0,
+        bestDist = Infinity;
+      rows.forEach((it, i) => {
+        const rr = it.row.getBoundingClientRect();
+        const dist = Math.abs(rr.top + rr.height / 2 - focus);
+        if (dist < bestDist) {
+          bestDist = dist;
+          idx = i;
+        }
+      });
+      return { p, idx };
+    };
+
+    const write = ({ p, idx }: { p: number; idx: number }) => {
+      if (p !== lastP) {
+        lastP = p;
+        if (fill) fill.style.height = p + "%";
+        if (orb) orb.style.top = p + "%";
+      }
+      if (idx === lastIdx) return;
+      lastIdx = idx;
       rows.forEach((it, i) => {
         const on = i === idx;
-        it.row.style.opacity = on ? "1" : i < idx ? ".6" : ".4";
+        const passed = i < idx;
+        it.row.style.opacity = on ? "1" : passed ? ".5" : ".32";
+        it.row.style.transform = on ? "translateY(0)" : passed ? "translateY(-4px)" : "translateY(6px)";
         if (it.name) {
           it.name.style.color = on ? "#fff" : "#5a5a5a";
           it.name.style.transform = on ? "scale(1.02)" : "scale(1)";
@@ -362,21 +385,9 @@ export class Engine {
           it.pills.style.opacity = on ? "1" : ".55";
         }
       });
-      ticks.forEach((tick, i) => {
-        const passed = i <= idx;
-        tick.style.background = passed ? "#eaf1ff" : "rgba(255,255,255,.22)";
-        tick.style.boxShadow = passed ? "0 0 8px rgba(79,140,255,.7)" : "none";
-      });
     };
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(apply);
-      }
-    };
-    scroller.addEventListener("scroll", onScroll, { passive: true });
-    this.cleanups.push(() => scroller.removeEventListener("scroll", onScroll));
-    apply();
+
+    return { read, write };
   }
 
   /* sticky only while the columns are genuinely side by side */
@@ -606,6 +617,8 @@ export class Engine {
       return rec;
     });
 
+    const experience = this.prepExperience();
+
     let docMax = 0;
     const remeasure = () => {
       docMax = document.documentElement.scrollHeight - innerHeight;
@@ -646,9 +659,11 @@ export class Engine {
         const r = it.el.getBoundingClientRect();
         return Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
       });
+      const expRead = experience?.read() ?? null;
 
       // ---- WRITE PHASE ----
       if (bar) bar.style.transform = `scaleX(${docMax > 0 ? Math.min(1, sy / docMax) : 0})`;
+      if (experience && expRead) experience.write(expRead);
       items.forEach((it, i) => {
         const raw = reads[i];
         if (raw === null) {
