@@ -2,9 +2,8 @@ import styles from "./Hero.module.css";
 import ParticleField from "@/components/ParticleField/ParticleField";
 
 const H1_LINES: { text: string; delay: number; dim?: boolean; last?: boolean }[] = [
-  { text: "Where Design", delay: 3.35 },
-  { text: "Meets", delay: 3.46 },
-  { text: "Engineering", delay: 3.57, dim: true, last: true },
+  { text: "Where Design Meets", delay: 3.35 },
+  { text: "Engineering", delay: 3.46, dim: true, last: true },
 ];
 
 const TECH_PILLS = [
