@@ -20,7 +20,10 @@
     border-color 0.35s ease,
     background 0.35s ease,
     box-shadow 0.35s ease;
-  animation: vRise 0.9s var(--ease) 4.5s both;
+  animation-duration: 0.9s;
+  animation-timing-function: var(--ease);
+  animation-delay: 4.5s;
+  animation-fill-mode: both;
 }
 .button:hover {
   border-color: rgba(79, 140, 255, 0.5);

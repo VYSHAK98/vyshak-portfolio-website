@@ -176,7 +176,7 @@ export default function AiPipeline() {
                 {WAVE_BARS.map((b, i) => (
                   <span
                     key={i}
-                    className={styles.waveBar}
+                    className={`${styles.waveBar} anim-vWave`}
                     style={{ animationDuration: b.dur, animationDelay: b.delay }}
                   />
                 ))}

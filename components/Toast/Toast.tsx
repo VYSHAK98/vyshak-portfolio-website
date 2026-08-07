@@ -25,7 +25,7 @@ export default function Toast() {
   if (!toast) return null;
 
   return (
-    <div key={toast.id} className={styles.toast}>
+    <div key={toast.id} className={`${styles.toast} anim-vToast`}>
       <div className={styles.icon}>★</div>
       <div>
         <div className={styles.label}>ACHIEVEMENT UNLOCKED</div>

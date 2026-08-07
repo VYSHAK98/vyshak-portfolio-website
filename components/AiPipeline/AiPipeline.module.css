@@ -163,7 +163,6 @@
   background: linear-gradient(to top, rgba(79, 140, 255, 0.25), var(--accent));
   border-radius: 2px;
   transform-origin: center;
-  animation-name: vWave;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }

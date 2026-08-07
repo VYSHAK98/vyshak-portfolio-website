@@ -25,7 +25,7 @@ export default function DevOverlay() {
     <>
       <div className={styles.grid} />
       <div className={styles.pill}>
-        <span className={styles.dot} />
+        <span className={`${styles.dot} anim-vPulse`} />
         <span className={styles.text}>DEV MODE · {fps} FPS · GRID 12</span>
       </div>
     </>

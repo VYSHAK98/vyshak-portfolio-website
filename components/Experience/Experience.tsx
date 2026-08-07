@@ -32,7 +32,7 @@ export default function Experience() {
                   />
                 ))}
                 <div data-exp-orb className={styles.orb}>
-                  <span className={styles.orbCore} />
+                  <span className={`${styles.orbCore} anim-vPulse`} />
                   <span className={styles.orbBloom} />
                 </div>
               </div>

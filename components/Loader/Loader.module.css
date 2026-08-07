@@ -4,7 +4,10 @@
   z-index: 100;
   background: var(--bg);
   pointer-events: none;
-  animation: vIris 1.15s cubic-bezier(0.76, 0, 0.24, 1) 2.95s both;
+  animation-duration: 1.15s;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  animation-delay: 2.95s;
+  animation-fill-mode: both;
 }
 
 .inner {
@@ -13,7 +16,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: vFadeOut 0.45s ease 2.75s both;
+  animation-duration: 0.45s;
+  animation-timing-function: ease;
+  animation-delay: 2.75s;
+  animation-fill-mode: both;
 }
 
 .ring {
@@ -22,7 +28,10 @@
   height: 150px;
   border-radius: 50%;
   border: 1px solid rgba(79, 140, 255, 0.5);
-  animation: vRing 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s infinite;
+  animation-duration: 2.6s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-delay: 0.15s;
+  animation-iteration-count: infinite;
 }
 .ringOuter {
   composes: ring;
@@ -49,7 +58,9 @@
 }
 
 .letter {
-  animation: vBlurIn 0.85s var(--ease) both;
+  animation-duration: 0.85s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
 }
 
 .roleWrap {
@@ -66,5 +77,6 @@
   justify-content: center;
   font: 400 11px var(--font-mono);
   letter-spacing: 0.32em;
-  animation: vRoleCycle ease both;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
 }

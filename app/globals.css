@@ -293,6 +293,71 @@ button {
   animation: vPulse 2.4s ease-in-out infinite;
 }
 
+/*
+ * animation-name utility classes.
+ *
+ * Next's CSS Modules build (Turbopack/Lightning CSS) scopes any
+ * `animation`/`animation-name` value the same way it scopes class
+ * names — even though the actual @keyframes live here as a plain,
+ * unscoped global stylesheet. A `.module.css` rule that writes
+ * `animation: vFadeIn 1s ease both` gets its `vFadeIn` silently
+ * rewritten to a hashed identifier with no matching @keyframes, so
+ * the animation never plays (a `global(vFadeIn)` wrapper is also
+ * silently dropped by this build, not just renamed).
+ *
+ * Fix: keep animation-name off every .module.css file. Components
+ * that need one of these keyframes add the matching class below
+ * (plain, unscoped) alongside their module class, and set
+ * animation-duration/-delay/-timing-function/-fill-mode/-iteration-count
+ * in their module CSS as normal — those longhands aren't identifiers,
+ * so they scope fine.
+ */
+.anim-vFadeIn {
+  animation-name: vFadeIn;
+}
+.anim-vFadeOut {
+  animation-name: vFadeOut;
+}
+.anim-vRise {
+  animation-name: vRise;
+}
+.anim-vMask {
+  animation-name: vMask;
+}
+.anim-vBlurIn {
+  animation-name: vBlurIn;
+}
+.anim-vRoleCycle {
+  animation-name: vRoleCycle;
+}
+.anim-vIris {
+  animation-name: vIris;
+}
+.anim-vRing {
+  animation-name: vRing;
+}
+.anim-vPulse {
+  animation-name: vPulse;
+}
+.anim-vFloat {
+  animation-name: vFloat;
+}
+.anim-vScrollDot {
+  animation-name: vScrollDot;
+}
+.anim-vMarquee {
+  animation-name: vMarquee;
+}
+.anim-vCaret {
+  animation-name: vCaret;
+}
+.anim-vWave {
+  animation-name: vWave;
+}
+.anim-vToast {
+  animation-name: vToast;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

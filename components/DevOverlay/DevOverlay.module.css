@@ -30,7 +30,9 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  animation: vPulse 1.6s ease-in-out infinite;
+  animation-duration: 1.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 .text {

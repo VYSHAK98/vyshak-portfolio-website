@@ -22,7 +22,7 @@ export default function TechStack() {
             <div className={styles.label}>{row.label}</div>
             <div
               data-marquee-track
-              className={`${styles.track} ${row.reverse ? styles.trackReverse : ""}`}
+              className={`${styles.track} anim-vMarquee ${row.reverse ? styles.trackReverse : ""}`}
               style={{ animationDuration: row.dur }}
             >
               {doubled.map((name, i) => (

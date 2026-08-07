@@ -27,8 +27,8 @@ export default function Hero() {
       <div data-hero-parallax className={styles.parallax}>
         <div className={styles.inner}>
           <div className={styles.topRow}>
-            <div className={styles.eyebrow}>FRONTEND ENGINEER — AI INTERFACES</div>
-            <div className={styles.openWork}>
+            <div className={`${styles.eyebrow} anim-vFadeIn`}>FRONTEND ENGINEER — AI INTERFACES</div>
+            <div className={`${styles.openWork} anim-vFadeIn`}>
               <span className="uiPulseDot" />
               <span className={styles.openWorkLabel}>OPEN TO WORK</span>
             </div>
@@ -38,7 +38,7 @@ export default function Hero() {
             {H1_LINES.map((line) => (
               <span key={line.text} className={line.last ? styles.lineWrapLast : styles.lineWrap}>
                 <span
-                  className={`${styles.lineInner} ${line.dim ? styles.lineDim : ""}`}
+                  className={`${styles.lineInner} anim-vMask ${line.dim ? styles.lineDim : ""}`}
                   style={{ animationDelay: `${line.delay}s` }}
                 >
                   {line.text}
@@ -47,20 +47,20 @@ export default function Hero() {
             ))}
           </h1>
 
-          <p className={styles.intro}>
+          <p className={`${styles.intro} anim-vRise`}>
             Enterprise frontend architecture in React, Next.js and TypeScript — voice AI, real-time
             transcript streaming, and platforms that carry real revenue for real businesses.
           </p>
 
           <div className={styles.pills}>
             {TECH_PILLS.map((p) => (
-              <span key={p.label} className={styles.pill} style={{ animationDelay: `${p.delay}s` }}>
+              <span key={p.label} className={`${styles.pill} anim-vRise`} style={{ animationDelay: `${p.delay}s` }}>
                 {p.label}
               </span>
             ))}
           </div>
 
-          <div className={styles.ctaRow}>
+          <div className={`${styles.ctaRow} anim-vRise`}>
             <a href="#work" data-magnetic data-cursor="EXPLORE" className={styles.ctaPrimary}>
               Explore Work
             </a>
@@ -71,7 +71,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className={styles.footerStrip}>
+      <div className={`${styles.footerStrip} anim-vFadeIn`}>
         <div className={styles.techList}>
           {FOOTER_TECH.map((t) => (
             <span key={t}>{t}</span>
@@ -80,7 +80,7 @@ export default function Hero() {
         <div className={styles.scrollGroup}>
           <span className={styles.scrollLabel}>SCROLL</span>
           <span className={styles.scrollLine}>
-            <span className={styles.scrollDot} />
+            <span className={`${styles.scrollDot} anim-vScrollDot`} />
           </span>
         </div>
       </div>

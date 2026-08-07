@@ -65,7 +65,6 @@
   display: flex;
   width: max-content;
   gap: 0;
-  animation-name: vMarquee;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

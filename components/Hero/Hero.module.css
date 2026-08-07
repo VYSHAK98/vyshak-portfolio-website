@@ -52,14 +52,20 @@
   font: 400 10px var(--font-mono);
   letter-spacing: 0.26em;
   color: var(--text-muted);
-  animation: vFadeIn 0.9s ease 3.55s both;
+  animation-duration: 0.9s;
+  animation-timing-function: ease;
+  animation-delay: 3.55s;
+  animation-fill-mode: both;
 }
 
 .openWork {
   display: flex;
   align-items: center;
   gap: 9px;
-  animation: vFadeIn 0.9s ease 3.65s both;
+  animation-duration: 0.9s;
+  animation-timing-function: ease;
+  animation-delay: 3.65s;
+  animation-fill-mode: both;
 }
 .openWorkLabel {
   font: 400 10px var(--font-mono);
@@ -87,7 +93,9 @@
 }
 .lineInner {
   display: block;
-  animation: vMask 1.05s var(--ease) both;
+  animation-duration: 1.05s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
 }
 .lineDim {
   color: var(--text-secondary);
@@ -99,7 +107,10 @@
   font: 400 16px/1.72 var(--font-body);
   color: var(--text-secondary);
   text-wrap: pretty;
-  animation: vRise 1s var(--ease) 3.9s both;
+  animation-duration: 1s;
+  animation-timing-function: var(--ease);
+  animation-delay: 3.9s;
+  animation-fill-mode: both;
 }
 
 .pills {
@@ -119,7 +130,9 @@
   transition:
     border-color 0.35s ease,
     color 0.35s ease;
-  animation: vRise 0.8s var(--ease) both;
+  animation-duration: 0.8s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
 }
 .pill:hover {
   border-color: rgba(79, 140, 255, 0.5);
@@ -131,7 +144,10 @@
   flex-wrap: wrap;
   gap: 11px;
   margin-top: 26px;
-  animation: vRise 1s var(--ease) 4.35s both;
+  animation-duration: 1s;
+  animation-timing-function: var(--ease);
+  animation-delay: 4.35s;
+  animation-fill-mode: both;
 }
 
 .ctaPrimary {
@@ -175,7 +191,10 @@
   flex-wrap: wrap;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   padding-top: 18px;
-  animation: vFadeIn 1s ease 4.4s both;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-delay: 4.4s;
+  animation-fill-mode: both;
 }
 
 .techList {
@@ -211,5 +230,7 @@
   height: 4px;
   border-radius: 50%;
   background: var(--accent);
-  animation: vScrollDot 2s ease-in-out infinite;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }

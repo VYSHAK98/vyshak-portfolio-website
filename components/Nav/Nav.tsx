@@ -14,7 +14,7 @@ export default function Nav() {
         <div data-progress className={styles.progressBar} />
       </div>
 
-      <nav className={styles.nav}>
+      <nav className={`${styles.nav} anim-vFadeIn`}>
         <button
           data-logo
           data-cursor="TERMINAL"
