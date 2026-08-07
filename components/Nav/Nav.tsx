@@ -3,7 +3,7 @@ import styles from "./Nav.module.css";
 const LINKS = [
   { href: "#work", label: "WORK" },
   { href: "#experience", label: "EXPERIENCE" },
-  { href: "#ai", label: "AI" },
+  // { href: "#ai", label: "AI" },
   { href: "#about", label: "ABOUT" },
 ];
 

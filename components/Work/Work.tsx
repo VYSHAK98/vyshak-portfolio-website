@@ -72,14 +72,14 @@ export default function Work() {
                     ))}
                   </div>
 
-                  <div className={styles.actions}>
+                  {/* <div className={styles.actions}>
                     <span data-magnetic data-cursor="OPEN" className={styles.liveDemo}>
                       Live Demo
                     </span>
                     <span data-magnetic data-cursor="OPEN" className={styles.caseStudy}>
                       Case Study
                     </span>
-                  </div>
+                  </div> */}
                 </article>
               </div>
             );
