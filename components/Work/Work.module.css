@@ -119,6 +119,11 @@
   display: flex;
   gap: 34px;
   flex-wrap: wrap;
+  /* when .topRow wraps on narrow screens, .stats lands alone on its
+     own line — justify-content:space-between on the parent has
+     nothing left to space, so without this it just sits flush left
+     instead of staying right-aligned like the rest of the row */
+  margin-left: auto;
 }
 .stat {
   text-align: right;
