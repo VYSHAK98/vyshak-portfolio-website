@@ -1,0 +1,26 @@
+.wrap {
+  z-index: 56;
+  justify-content: flex-end;
+}
+.inner {
+  position: relative;
+  padding-right: 16px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+}
+.pill {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 11.5px var(--font-body);
+  color: var(--text);
+}

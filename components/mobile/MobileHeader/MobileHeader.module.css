@@ -1,0 +1,163 @@
+.progressTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+}
+.progressBar {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), rgba(79, 140, 255, 0.4));
+}
+
+.bar {
+  z-index: 55;
+  background: linear-gradient(to bottom, #050505 0, rgba(5, 5, 5, 0.94) 60%, transparent 100%);
+}
+.barInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px calc(14px + env(safe-area-inset-top));
+}
+
+.logo {
+  font: 500 13px var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--text);
+}
+.logoDot {
+  color: var(--accent);
+}
+
+.menuBtn {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  border-radius: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+}
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 14px;
+}
+.bars span {
+  display: block;
+  width: 14px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+  transform-origin: center;
+}
+.barsOpen span:first-child {
+  transform: translateY(2.75px) rotate(45deg);
+}
+.barsOpen span:last-child {
+  transform: translateY(-2.75px) rotate(-45deg);
+}
+.menuLabel {
+  font: 500 10.5px var(--font-mono);
+  letter-spacing: 0.16em;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  background: rgba(5, 5, 5, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlayInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(90px + env(safe-area-inset-top)) 20px 24px;
+  overflow-y: auto;
+}
+
+.navigateLabel {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.24em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.navRows {
+  flex: 1;
+}
+.navRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 15px 0;
+  border-top: 1px solid var(--hairline);
+  opacity: 0;
+  transform: translateY(18px);
+}
+.navIndex {
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  flex: none;
+}
+.navLabel {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.overlayActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+}
+.emailBtn {
+  height: 52px;
+  border-radius: 26px;
+  background: #fff;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 13px var(--font-body);
+}
+.socialRow {
+  display: flex;
+  gap: 10px;
+}
+.socialBtn {
+  flex: 1 1 50%;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 12.5px var(--font-body);
+}

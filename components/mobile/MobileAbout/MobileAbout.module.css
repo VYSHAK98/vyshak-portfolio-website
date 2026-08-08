@@ -1,0 +1,67 @@
+.section {
+  padding: 60px 20px;
+  border-top: 1px solid var(--hairline);
+}
+
+.eyebrow {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.heading {
+  margin: 0 0 20px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 8.4vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.p1 {
+  margin: 0 0 16px;
+  font: 400 15.5px/1.7 var(--font-body);
+  color: var(--text);
+}
+.p2 {
+  margin: 0 0 28px;
+  font: 400 14.5px/1.72 var(--font-body);
+  color: var(--text-secondary);
+}
+
+.meta {
+  border-top: 1px solid var(--hairline);
+  margin-bottom: 28px;
+}
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.metaKey {
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  flex: none;
+}
+.metaValue {
+  font: 500 13.5px var(--font-body);
+  color: var(--text);
+  text-align: right;
+}
+
+.currently {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.currentlyLabel {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}

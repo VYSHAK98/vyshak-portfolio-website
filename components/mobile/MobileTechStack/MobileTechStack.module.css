@@ -1,0 +1,54 @@
+.section {
+  padding: 56px 0;
+  border-top: 1px solid var(--hairline);
+  overflow: hidden;
+}
+
+.header {
+  padding: 0 20px;
+  margin-bottom: 24px;
+}
+.eyebrow {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(26px, 7.4vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.row {
+  padding: 12px 0;
+  border-top: 1px solid var(--hairline);
+}
+.rowLabel {
+  padding: 0 20px;
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.trackReverse {
+  animation-direction: reverse;
+}
+.item {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  padding: 0 18px;
+  white-space: nowrap;
+}

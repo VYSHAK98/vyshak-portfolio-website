@@ -358,6 +358,99 @@ button {
   animation-name: vToast;
 }
 
+/* ===== Mobile-only keyframes + their anim-m* utility classes (same
+   reasoning as anim-v* above — animation-name must not live in a
+   .module.css file under this build) ===== */
+@keyframes mMask {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes mFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes mPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+@keyframes mMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes mWave {
+  0%,
+  100% {
+    transform: scaleY(0.2);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes mScrollDot {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+.anim-mMask {
+  animation-name: mMask;
+}
+.anim-mFade {
+  animation-name: mFade;
+}
+.anim-mRise {
+  animation-name: mRise;
+}
+.anim-mPulse {
+  animation-name: mPulse;
+}
+.anim-mMarquee {
+  animation-name: mMarquee;
+}
+.anim-mWave {
+  animation-name: mWave;
+}
+.anim-mScrollDot {
+  animation-name: mScrollDot;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -1,0 +1,22 @@
+.shell {
+  position: relative;
+  width: min(460px, 100%);
+  margin: 0 auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.fixedWrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.fixedInner {
+  width: min(460px, 100%);
+  pointer-events: auto;
+}

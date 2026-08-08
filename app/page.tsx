@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import { Engine } from "@/lib/engine";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import Loader from "@/components/Loader/Loader";
 import Cursor from "@/components/Cursor/Cursor";
 import Nav from "@/components/Nav/Nav";
@@ -19,11 +20,21 @@ import Footer from "@/components/Footer/Footer";
 import ResumeButton from "@/components/ResumeButton/ResumeButton";
 import Toast from "@/components/Toast/Toast";
 import DevOverlay from "@/components/DevOverlay/DevOverlay";
+import MobileShell from "@/components/mobile/MobileShell";
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
+  // matches the desktop nav's own CSS breakpoint, so "mobile" here means
+  // the same viewport range that already loses the desktop nav links
+  const isMobile = useMediaQuery("(max-width: 760px)");
 
   useEffect(() => {
+    // the desktop Engine (custom cursor, magnetic/tilt, stack-card
+    // desaturation, sticky cols, career-rail scroll math, marquee pause)
+    // never boots on mobile — the mobile tree has its own hooks for the
+    // pieces it needs and none of the desktop-only interactions the spec
+    // explicitly excludes (cursor, magnetic buttons, 3D tilt, sticky stack)
+    if (isMobile) return;
     if (!rootRef.current) return;
     const engine = new Engine(rootRef.current);
     // boot on next frame, matching the reference's rootRef -> requestAnimationFrame(boot)
@@ -32,25 +43,31 @@ export default function Home() {
       cancelAnimationFrame(raf);
       engine.destroy();
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={rootRef} className={styles.root}>
-      <Nav />
-      <Hero />
-      <About />
-      <Numbers />
-      <Experience />
-      {/* <AiPipeline /> temporarily disabled */}
-      <Work />
-      <TechStack />
-      {/* <Terminal /> temporarily disabled */}
-      <Contact />
-      <Footer />
-      <ResumeButton />
+      {isMobile ? (
+        <MobileShell />
+      ) : (
+        <>
+          <Nav />
+          <Hero />
+          <About />
+          <Numbers />
+          <Experience />
+          {/* <AiPipeline /> temporarily disabled */}
+          <Work />
+          <TechStack />
+          {/* <Terminal /> temporarily disabled */}
+          <Contact />
+          <Footer />
+          <ResumeButton />
+        </>
+      )}
 
       <Loader />
-      <Cursor />
+      {!isMobile && <Cursor />}
       <Toast />
       <DevOverlay />
     </div>

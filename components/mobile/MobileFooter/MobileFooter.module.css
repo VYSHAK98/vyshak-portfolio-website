@@ -1,0 +1,12 @@
+.footer {
+  padding: 28px 20px calc(90px + env(safe-area-inset-bottom));
+  text-align: center;
+}
+.line {
+  font: 400 9.5px var(--font-mono);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+.line + .line {
+  margin-top: 8px;
+}

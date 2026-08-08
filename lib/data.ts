@@ -49,6 +49,36 @@ export const MARQUEE_ROWS: MarqueeRow[] = [
   },
 ];
 
+/** Mobile Stack section groups content differently from desktop's
+ *  FRONTEND/BACKEND/AI & CLOUD/CRAFT — CORE/BACKEND/CRAFT/DOMAIN per
+ *  the mobile spec. */
+export const MOBILE_MARQUEE_ROWS: MarqueeRow[] = [
+  {
+    label: "CORE",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Redux", "React Query", "Zustand"],
+    dur: "34s",
+    reverse: false,
+  },
+  {
+    label: "BACKEND",
+    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST", "WebSockets"],
+    dur: "30s",
+    reverse: true,
+  },
+  {
+    label: "CRAFT",
+    items: ["GSAP", "Three.js", "Framer Motion", "Figma", "Git", "Agile"],
+    dur: "32s",
+    reverse: false,
+  },
+  {
+    label: "DOMAIN",
+    items: ["Voice AI", "Speech-to-Text", "LLM Interfaces", "Aviation", "EdTech", "Web3", "Fintech"],
+    dur: "36s",
+    reverse: true,
+  },
+];
+
 export interface Experience {
   company: string;
   role: string;

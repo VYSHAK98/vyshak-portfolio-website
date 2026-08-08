@@ -1,0 +1,155 @@
+.hero {
+  position: relative;
+  padding: calc(96px + env(safe-area-inset-top)) 20px 40px;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: -180px;
+  right: -140px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 140, 255, 0.15), rgba(79, 140, 255, 0.05) 45%, transparent 72%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.9);
+}
+.statusText {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(42px, 12.2vw, 54px);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.lineWrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 3px;
+}
+.lineInner {
+  display: block;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
+  animation-duration: 0.9s;
+}
+.lineDim {
+  color: var(--text-secondary);
+}
+
+.intro {
+  margin: 18px 0 0;
+  font: 400 15px/1.7 var(--font-body);
+  color: var(--text-secondary);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+.chip {
+  font: 500 10px var(--font-mono);
+  letter-spacing: 0.08em;
+  color: #c9c9c9;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+.ctaPrimary {
+  height: 54px;
+  border-radius: 27px;
+  background: #fff;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 14px var(--font-body);
+}
+.ctaSecondary {
+  height: 54px;
+  border-radius: 27px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 14px var(--font-body);
+}
+
+.footerStrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+}
+.footerLabel {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+.scrollGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.scrollLabel {
+  font: 400 9px var(--font-mono);
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+}
+.scrollLine {
+  width: 1px;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  position: relative;
+}
+.scrollDot {
+  position: absolute;
+  top: 0;
+  left: -1.5px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
