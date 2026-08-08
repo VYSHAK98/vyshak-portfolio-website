@@ -76,3 +76,25 @@
   color: var(--text-muted);
   margin-top: 16px;
 }
+
+/* below ~560px the grid collapses to a single column (auto-fit can't
+   fit two 200px tracks) — the nth-child gutter padding meant for
+   side-by-side columns then shoves every row but the first to the
+   right, so reset it here and use a bottom rule instead of a right
+   border between stacked rows */
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .stat,
+  .stat:nth-child(2),
+  .stat:nth-child(3),
+  .stat:last-child {
+    padding: 28px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .stat:last-child {
+    border-bottom: 0;
+  }
+}
