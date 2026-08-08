@@ -1,0 +1,127 @@
+.section {
+  position: relative;
+  padding: 120px 0 140px;
+  border-top: 1px solid var(--hairline);
+}
+
+.inner {
+  width: var(--content-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.26em;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s var(--ease) 0.05s,
+    transform 1s var(--ease) 0.05s;
+}
+
+.hint {
+  font: 400 10px var(--font-mono);
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s var(--ease) 0.1s,
+    transform 0.9s var(--ease) 0.1s;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline-mid);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -60px rgba(0, 0, 0, 1);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s var(--ease),
+    transform 1s var(--ease);
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.015);
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2e2e2e;
+}
+.titlebarText {
+  font: 400 10.5px var(--font-mono);
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  margin-left: 10px;
+}
+
+.scroll {
+  height: 360px;
+  overflow-y: auto;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.line {
+  white-space: pre-wrap;
+  font: 400 12.5px/1.75 var(--font-mono);
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+}
+.prompt {
+  font: 400 12.5px var(--font-mono);
+  color: var(--accent);
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  font: 400 12.5px var(--font-mono);
+  color: var(--text);
+  caret-color: var(--accent);
+}

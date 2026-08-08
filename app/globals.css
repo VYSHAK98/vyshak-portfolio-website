@@ -1,0 +1,373 @@
+/* ===== Design tokens ===== */
+:root {
+  --bg: #050505;
+  --surface: #0b0b0b;
+  --accent: #4f8cff;
+  --accent-tint: #9dbcff;
+  --text: #ffffff;
+  --text-secondary: #9b9b9b;
+  --text-muted: #8f8f8f;
+  --text-dim: #6b6b6b;
+  --text-dim-2: #5a5a5a;
+  --hairline: rgba(255, 255, 255, 0.06);
+  --hairline-mid: rgba(255, 255, 255, 0.09);
+  --hairline-strong: rgba(255, 255, 255, 0.14);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-display: "Clash Display", sans-serif;
+  --font-body: "General Sans", system-ui, sans-serif;
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --content-width: min(1280px, calc(100% - 96px));
+}
+
+/* ===== Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* set here (not on body) so html stays the scrolling element unambiguously —
+     an overflow-x set only on body with no overflow-y can make Chrome turn
+     body into its own scroll container instead of propagating to the
+     viewport, which silently freezes window.scrollY for the rAF engine */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent);
+}
+
+::selection {
+  background: rgba(79, 140, 255, 0.3);
+}
+
+input {
+  font-family: inherit;
+}
+
+button {
+  font-family: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* custom cursor takes over on fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  body * {
+    cursor: none;
+  }
+}
+
+/* scrollbars hidden site-wide, scrolling still works */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* ===== Keyframes ===== */
+@keyframes vMask {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes vFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes vFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes vBlurIn {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@keyframes vRoleCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(6px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  74% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+    filter: blur(6px);
+  }
+}
+@keyframes vIris {
+  from {
+    clip-path: circle(150% at 50% 50%);
+  }
+  to {
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+@keyframes vRing {
+  0% {
+    transform: scale(0.15);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+@keyframes vPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(0.7);
+  }
+}
+@keyframes vFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes vScrollDot {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+@keyframes vMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes vCaret {
+  0%,
+  46% {
+    opacity: 1;
+  }
+  50%,
+  96% {
+    opacity: 0;
+  }
+}
+@keyframes vWave {
+  0%,
+  100% {
+    transform: scaleY(0.18);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+@keyframes vToast {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  88% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+}
+
+/* shared pulsing accent marker (hero "open to work", about "currently at", experience orb) */
+.uiPulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(79, 140, 255, 0.9);
+  animation: vPulse 2.4s ease-in-out infinite;
+}
+
+/*
+ * animation-name utility classes.
+ *
+ * Next's CSS Modules build (Turbopack/Lightning CSS) scopes any
+ * `animation`/`animation-name` value the same way it scopes class
+ * names — even though the actual @keyframes live here as a plain,
+ * unscoped global stylesheet. A `.module.css` rule that writes
+ * `animation: vFadeIn 1s ease both` gets its `vFadeIn` silently
+ * rewritten to a hashed identifier with no matching @keyframes, so
+ * the animation never plays (a `global(vFadeIn)` wrapper is also
+ * silently dropped by this build, not just renamed).
+ *
+ * Fix: keep animation-name off every .module.css file. Components
+ * that need one of these keyframes add the matching class below
+ * (plain, unscoped) alongside their module class, and set
+ * animation-duration/-delay/-timing-function/-fill-mode/-iteration-count
+ * in their module CSS as normal — those longhands aren't identifiers,
+ * so they scope fine.
+ */
+.anim-vFadeIn {
+  animation-name: vFadeIn;
+}
+.anim-vFadeOut {
+  animation-name: vFadeOut;
+}
+.anim-vRise {
+  animation-name: vRise;
+}
+.anim-vMask {
+  animation-name: vMask;
+}
+.anim-vBlurIn {
+  animation-name: vBlurIn;
+}
+.anim-vRoleCycle {
+  animation-name: vRoleCycle;
+}
+.anim-vIris {
+  animation-name: vIris;
+}
+.anim-vRing {
+  animation-name: vRing;
+}
+.anim-vPulse {
+  animation-name: vPulse;
+}
+.anim-vFloat {
+  animation-name: vFloat;
+}
+.anim-vScrollDot {
+  animation-name: vScrollDot;
+}
+.anim-vMarquee {
+  animation-name: vMarquee;
+}
+.anim-vCaret {
+  animation-name: vCaret;
+}
+.anim-vWave {
+  animation-name: vWave;
+}
+.anim-vToast {
+  animation-name: vToast;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

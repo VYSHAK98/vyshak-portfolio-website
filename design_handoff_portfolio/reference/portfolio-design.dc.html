@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700,900&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#050505;color:#fff;font-family:'General Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:#fff;text-decoration:none}
+a:hover{color:#4F8CFF}
+::selection{background:rgba(79,140,255,.3)}
+input{font-family:inherit}
+button{font-family:inherit;border:0;background:none;padding:0}
+:focus-visible{outline:2px solid #4F8CFF;outline-offset:3px}
+@media (hover:hover) and (pointer:fine){body,body *{cursor:none}}
+html{scrollbar-width:none}
+*::-webkit-scrollbar{width:0;height:0;display:none}
+@keyframes vMask{from{transform:translateY(115%)}to{transform:translateY(0)}}
+@keyframes vFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes vFadeOut{from{opacity:1}to{opacity:0}}
+@keyframes vRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes vBlurIn{from{opacity:0;filter:blur(12px);transform:translateY(8px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes vRoleCycle{0%{opacity:0;transform:translateY(12px);filter:blur(6px)}20%{opacity:1;transform:translateY(0);filter:blur(0)}74%{opacity:1;transform:translateY(0);filter:blur(0)}100%{opacity:0;transform:translateY(-12px);filter:blur(6px)}}
+@keyframes vIris{from{clip-path:circle(150% at 50% 50%)}to{clip-path:circle(0% at 50% 50%)}}
+@keyframes vRing{0%{transform:scale(.15);opacity:0}25%{opacity:.55}100%{transform:scale(3.2);opacity:0}}
+@keyframes vPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.28;transform:scale(.7)}}
+@keyframes vFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes vScrollDot{0%{transform:translateY(-8px);opacity:0}35%{opacity:1}100%{transform:translateY(10px);opacity:0}}
+@keyframes vMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes vCaret{0%,46%{opacity:1}50%,96%{opacity:0}}
+@keyframes vWave{0%,100%{transform:scaleY(.18)}50%{transform:scaleY(1)}}
+@keyframes vToast{0%{opacity:0;transform:translateY(24px) scale(.96)}12%{opacity:1;transform:translateY(0) scale(1)}88%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-10px) scale(.98)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;animation-delay:0s !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}html{scroll-behavior:auto}}
+</style></helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;background:#050505">
+
+<div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:90;pointer-events:none"><div data-progress style="height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4F8CFF,rgba(79,140,255,.35))"></div></div>
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;padding:20px min(48px,5vw);background:linear-gradient(to bottom,#050505 0,rgba(5,5,5,.92) 62%,rgba(5,5,5,0) 100%);animation:vFadeIn 1s ease 3.6s both">
+<button data-logo data-cursor="TERMINAL" aria-label="Vyshak Harikumar — double-click for terminal" style="display:flex;align-items:center;gap:9px;color:#fff">
+<span style="font:500 13px 'Geist Mono',ui-monospace,monospace;letter-spacing:.16em">VH<span style="color:#4F8CFF">.</span></span>
+</button>
+<div style="display:flex;align-items:center;gap:28px">
+<a href="#work" data-cursor="VIEW" style="font:500 11px 'General Sans',sans-serif;letter-spacing:.14em;color:#9B9B9B">WORK</a>
+<a href="#experience" data-cursor="VIEW" style="font:500 11px 'General Sans',sans-serif;letter-spacing:.14em;color:#9B9B9B">EXPERIENCE</a>
+<a href="#ai" data-cursor="VIEW" style="font:500 11px 'General Sans',sans-serif;letter-spacing:.14em;color:#9B9B9B">AI</a>
+<a href="#about" data-cursor="VIEW" style="font:500 11px 'General Sans',sans-serif;letter-spacing:.14em;color:#9B9B9B">ABOUT</a>
+<button data-sound aria-label="Toggle interface sound" data-cursor="SOUND" style="display:flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:#9B9B9B" style-hover="border-color:rgba(79,140,255,.5);color:#fff">
+<span data-sound-dot style="width:5px;height:5px;border-radius:50%;background:#3a3a3a"></span>
+<span style="font:400 9.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.16em">SOUND</span>
+</button>
+<a href="#contact" data-magnetic data-cursor="SAY HI" style="font:600 11.5px 'General Sans',sans-serif;color:#050505;background:#fff;padding:9px 18px;border-radius:20px;transition:box-shadow .35s ease" style-hover="box-shadow:0 10px 26px -10px rgba(255,255,255,.55);color:#050505">Let's talk</a>
+</div>
+</nav>
+
+<header style="position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column">
+<canvas data-field style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+<div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E&quot;);opacity:.05;pointer-events:none"></div>
+<div style="position:absolute;top:-220px;left:42%;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.13),rgba(79,140,255,.05) 45%,transparent 72%);pointer-events:none"></div>
+
+<div data-hero-parallax style="position:relative;flex:1;display:flex;align-items:center;width:min(1280px,calc(100% - 96px));margin:0 auto;padding:120px 0 90px">
+<div style="width:100%">
+
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:clamp(20px,2.4vw,34px)">
+<div style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f;animation:vFadeIn .9s ease 3.55s both">FRONTEND ENGINEER — AI INTERFACES</div>
+<div style="display:flex;align-items:center;gap:9px;animation:vFadeIn .9s ease 3.65s both">
+<span style="width:6px;height:6px;border-radius:50%;background:#4F8CFF;box-shadow:0 0 10px rgba(79,140,255,.9);animation:vPulse 2.4s ease-in-out infinite"></span>
+<span style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.2em;color:#8f8f8f">OPEN TO WORK</span>
+</div>
+</div>
+
+<h1 style="margin:0;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(52px,10.4vw,158px);line-height:.88;letter-spacing:-.045em;color:#fff">
+<span style="display:block;overflow:hidden;padding-bottom:4px"><span style="display:block;animation:vMask 1.05s cubic-bezier(.16,1,.3,1) 3.35s both">Crafting</span></span>
+<span style="display:block;overflow:hidden;padding-bottom:4px"><span style="display:block;animation:vMask 1.05s cubic-bezier(.16,1,.3,1) 3.46s both">Modern Digital</span></span>
+<span style="display:block;overflow:hidden;padding-bottom:8px"><span style="display:block;animation:vMask 1.05s cubic-bezier(.16,1,.3,1) 3.57s both;color:#9B9B9B">Experiences</span></span>
+</h1>
+
+<p style="margin:clamp(26px,3.4vw,46px) 0 0;max-width:520px;font:400 16px/1.72 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty;animation:vRise 1s cubic-bezier(.16,1,.3,1) 3.9s both">Enterprise frontend architecture in React, Next.js and TypeScript — voice AI, real-time transcript streaming, and platforms that carry real revenue for real businesses.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(26px,3vw,38px)">
+<span style="font:500 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:#c9c9c9;padding:6px 13px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .35s ease,color .35s ease;animation:vRise .8s cubic-bezier(.16,1,.3,1) 4.05s both" style-hover="border-color:rgba(79,140,255,.5);color:#fff">React</span><span style="font:500 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:#c9c9c9;padding:6px 13px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .35s ease,color .35s ease;animation:vRise .8s cubic-bezier(.16,1,.3,1) 4.11s both" style-hover="border-color:rgba(79,140,255,.5);color:#fff">Next.js</span><span style="font:500 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:#c9c9c9;padding:6px 13px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .35s ease,color .35s ease;animation:vRise .8s cubic-bezier(.16,1,.3,1) 4.17s both" style-hover="border-color:rgba(79,140,255,.5);color:#fff">TypeScript</span><span style="font:500 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:#c9c9c9;padding:6px 13px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .35s ease,color .35s ease;animation:vRise .8s cubic-bezier(.16,1,.3,1) 4.23s both" style-hover="border-color:rgba(79,140,255,.5);color:#fff">AI Interfaces</span><span style="font:500 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:#c9c9c9;padding:6px 13px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .35s ease,color .35s ease;animation:vRise .8s cubic-bezier(.16,1,.3,1) 4.29s both" style-hover="border-color:rgba(79,140,255,.5);color:#fff">Micro-Frontends</span>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:11px;margin-top:26px;animation:vRise 1s cubic-bezier(.16,1,.3,1) 4.35s both">
+<a href="#work" data-magnetic data-cursor="EXPLORE" style="font:600 13px 'General Sans',sans-serif;color:#050505;background:#fff;padding:13px 26px;border-radius:26px;transition:box-shadow .35s ease" style-hover="box-shadow:0 14px 32px -12px rgba(255,255,255,.5);color:#050505">Explore Work</a>
+<a href="#contact" data-magnetic data-cursor="OPEN" style="font:600 13px 'General Sans',sans-serif;color:#fff;padding:13px 26px;border-radius:26px;border:1px solid rgba(255,255,255,.14);transition:background .35s ease,border-color .35s ease" style-hover="background:rgba(79,140,255,.12);border-color:rgba(79,140,255,.45);color:#fff">Get in Touch</a>
+</div>
+
+</div>
+</div>
+
+<div style="position:relative;width:min(1280px,calc(100% - 96px));margin:0 auto;padding-bottom:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.07);padding-top:18px;animation:vFadeIn 1s ease 4.4s both">
+<div style="display:flex;flex-wrap:wrap;gap:26px;font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.16em;color:#8f8f8f">
+<span>REACT</span><span>NEXT.JS</span><span>TYPESCRIPT</span><span>NODE</span><span>THREE.JS</span><span>GSAP</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<span style="font:400 9px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f">SCROLL</span>
+<span style="width:1px;height:22px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);position:relative"><span style="position:absolute;top:0;left:-1.5px;width:4px;height:4px;border-radius:50%;background:#4F8CFF;animation:vScrollDot 2s ease-in-out infinite"></span></span>
+</div>
+</div>
+</header>
+
+<section id="about" data-screen-label="About" style="position:relative;padding:150px 0;border-top:1px solid rgba(255,255,255,.06)">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div style="display:flex;gap:clamp(40px,7vw,110px);flex-wrap:wrap;align-items:flex-start">
+<div data-sticky-col style="flex:1 1 380px;min-width:280px;position:static;top:140px">
+<div data-rv style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:26px;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0s,transform .95s cubic-bezier(.16,1,.3,1) 0s">02 — ABOUT</div>
+<h2 data-rv style="margin:0;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(34px,4.4vw,62px);line-height:1.0;letter-spacing:-.038em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.05s,transform .95s cubic-bezier(.16,1,.3,1) 0.05s">Interfaces are where the product becomes real.</h2>
+<div data-rv style="display:flex;align-items:center;gap:12px;margin-top:34px;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.14s,transform .95s cubic-bezier(.16,1,.3,1) 0.14s">
+<span style="width:6px;height:6px;border-radius:50%;background:#4F8CFF;box-shadow:0 0 12px rgba(79,140,255,.9);animation:vPulse 2.4s ease-in-out infinite"></span>
+<span style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f">CURRENTLY AT VERVEO SOLUTIONS</span>
+</div>
+</div>
+<div style="flex:1 1 500px;min-width:300px;max-width:620px;padding-top:6px">
+<p data-rv style="margin:0 0 24px;font:400 17px/1.72 'General Sans',sans-serif;color:#fff;text-wrap:pretty;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.1s,transform .95s cubic-bezier(.16,1,.3,1) 0.1s">Three years in, I've spent most of my time on software that people are paid to use — aviation revenue systems, learning platforms for schools across India, fintech tooling, and now an AI agent platform that places and answers real calls.</p>
+<p data-rv style="margin:0 0 24px;font:400 15.5px/1.78 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.16s,transform .95s cubic-bezier(.16,1,.3,1) 0.16s">That work rewards a particular discipline: architecture that survives the second year, component systems a team can move quickly inside, and state that stays honest when the data is streaming in live. I care about the render path as much as the layout.</p>
+<p data-rv style="margin:0 0 44px;font:400 15.5px/1.78 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty;opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.22s,transform .95s cubic-bezier(.16,1,.3,1) 0.22s">The craft side matters too. Motion, timing and restraint are how an interface signals quality before anyone reads a word of it — which is roughly the argument this page is making.</p>
+<div data-rv style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-top:1px solid rgba(255,255,255,.08);opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1) 0.28s,transform .95s cubic-bezier(.16,1,.3,1) 0.28s">
+<div style="padding:24px 20px 0 0">
+<div style="font:400 9.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.2em;color:#8f8f8f;margin-bottom:9px">BASED IN</div>
+<div style="font:500 14px 'General Sans',sans-serif;color:#fff">Bengaluru, India</div>
+</div>
+<div style="padding:24px 20px 0 0">
+<div style="font:400 9.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.2em;color:#8f8f8f;margin-bottom:9px">EDUCATION</div>
+<div style="font:500 14px 'General Sans',sans-serif;color:#fff">B.Tech — APJ Abdul Kalam Technological University</div>
+</div>
+<div style="padding:24px 0 0">
+<div style="font:400 9.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.2em;color:#8f8f8f;margin-bottom:9px">FOCUS</div>
+<div style="font:500 14px 'General Sans',sans-serif;color:#fff">AI interfaces & scale</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-screen-label="Numbers" style="position:relative;padding:130px 0;border-top:1px solid rgba(255,255,255,.06)">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div data-rv style="font:400 10px 'Geist Mono',monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:50px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">03 — BY THE NUMBERS</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-top:1px solid rgba(255,255,255,.08)">
+<div data-rv style="padding:38px 30px 34px 0;border-right:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+<div style="display:flex;align-items:baseline"><span data-count="3" style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(52px,6vw,84px);line-height:1;letter-spacing:-.04em;color:#fff">0</span><span style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(30px,3vw,44px);color:#4F8CFF">+</span></div>
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;margin-top:16px">YEARS BUILDING</div>
+</div>
+<div data-rv style="padding:38px 30px 34px;border-right:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .07s,transform .9s cubic-bezier(.16,1,.3,1) .07s">
+<div style="display:flex;align-items:baseline"><span data-count="15" style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(52px,6vw,84px);line-height:1;letter-spacing:-.04em;color:#fff">0</span><span style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(30px,3vw,44px);color:#4F8CFF">+</span></div>
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;margin-top:16px">PROJECTS SHIPPED</div>
+</div>
+<div data-rv style="padding:38px 30px 34px;border-right:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .14s,transform .9s cubic-bezier(.16,1,.3,1) .14s">
+<div style="display:flex;align-items:baseline"><span data-count="5" style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(52px,6vw,84px);line-height:1;letter-spacing:-.04em;color:#fff">0</span></div>
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;margin-top:16px">INDUSTRIES</div>
+</div>
+<div data-rv style="padding:38px 0 34px 30px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .21s,transform .9s cubic-bezier(.16,1,.3,1) .21s">
+<div style="display:flex;align-items:baseline"><span data-count="1" style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(52px,6vw,84px);line-height:1;letter-spacing:-.04em;color:#fff">0</span></div>
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;margin-top:16px">SDK IN PRODUCTION</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="experience" data-screen-label="Experience" style="position:relative;padding:140px 0 0;border-top:1px solid rgba(255,255,255,.06)">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div data-rv style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:24px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">04 — EXPERIENCE</div>
+<h2 data-rv style="margin:0 0 20px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.04em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .05s,transform 1s cubic-bezier(.16,1,.3,1) .05s">Career journey.</h2>
+<p style="margin:0 0 56px;max-width:640px;font:400 15px/1.75 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty">From full-stack intern to owning frontend architecture on an AI platform — each step traded scope for depth.</p>
+<div style="display:flex;gap:20px;align-items:stretch;flex-wrap:wrap">
+<div style="flex:0 0 clamp(96px,9%,118px);display:flex;flex-direction:column;height:560px">
+<div style="position:relative;flex:1;display:flex;justify-content:flex-start">
+<div style="position:relative;width:2px;height:100%;border-radius:2px;background:rgba(255,255,255,.09);margin-left:1px">
+<div data-exp-fill style="position:absolute;left:0;top:0;width:100%;height:0%;border-radius:2px;background:linear-gradient(180deg,#4F8CFF,rgba(79,140,255,.35));box-shadow:0 0 16px rgba(79,140,255,.6)"></div>
+<sc-for list="{{ experiences }}" as="e" hint-placeholder-count="4">
+<div data-exp-tick style="position:absolute;left:-2px;top:{{ e.tickPct }}%;margin-top:-3px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);transition:background .5s ease,box-shadow .5s ease"></div>
+</sc-for>
+<div data-exp-orb style="position:absolute;left:1px;top:0%;width:0;height:0;transition:top .25s cubic-bezier(.16,1,.3,1)">
+<span style="position:absolute;left:-6.5px;top:-6.5px;width:13px;height:13px;border-radius:50%;background:#eaf1ff;box-shadow:0 0 0 4px rgba(79,140,255,.16),0 0 20px 6px rgba(79,140,255,.65),0 0 44px 16px rgba(79,140,255,.25);animation:vPulse 2.8s ease-in-out infinite"></span>
+<span style="position:absolute;left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.5),transparent 70%);filter:blur(5px)"></span>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;padding-top:24px;flex:none">
+<div style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:28px;letter-spacing:-.03em;color:#fff">3+ <span style="font-size:13px;color:#8f8f8f;font-family:'General Sans',sans-serif;font-weight:500">years</span></div>
+<div style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.16em;color:#8f8f8f">4 COMPANIES</div>
+</div>
+</div>
+<div data-exp-scroll style="position:relative;flex:1 1 460px;min-width:0;height:560px;overflow-y:auto;padding-right:14px;scrollbar-width:none">
+<sc-for list="{{ experiences }}" as="e" hint-placeholder-count="4">
+<div data-exp-row style="padding:32px 0;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:12px;opacity:.45;transition:opacity .5s ease">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+<h3 data-exp-name style="margin:0;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(26px,3.2vw,44px);line-height:1.05;letter-spacing:-.03em;color:#5a5a5a;transition:color .5s ease,transform .5s cubic-bezier(.16,1,.3,1);transform-origin:left center">{{ e.company }}</h3>
+<span data-exp-date style="font:400 11px 'Geist Mono',ui-monospace,monospace;letter-spacing:.14em;color:#6b6b6b;transition:color .5s ease;flex:none">{{ e.period }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+<span style="font:500 14px 'General Sans',sans-serif;color:#9B9B9B">{{ e.role }}</span>
+<span style="width:4px;height:4px;border-radius:50%;background:#3a3a3a"></span>
+<span style="font:400 10.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.16em;color:#6b6b6b">{{ e.location }}</span>
+</div>
+<p data-exp-desc style="margin:4px 0 0;max-width:620px;font:400 14.5px/1.72 'General Sans',sans-serif;color:#6f6f6f;text-wrap:pretty;transition:color .5s ease">{{ e.desc }}</p>
+<div data-exp-pills style="display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;opacity:.55;transform:translateY(6px);transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s ease">
+<sc-for list="{{ e.stack }}" as="t" hint-placeholder-count="4">
+<span style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.1em;color:rgba(255,255,255,.6);padding:7px 12px;border:1px solid rgba(255,255,255,.12);border-radius:5px">{{ t }}</span>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="ai" data-screen-label="AI Engineering" style="position:relative;padding:130px 0 150px;border-top:1px solid rgba(255,255,255,.06);overflow:hidden">
+<div style="position:absolute;top:80px;left:50%;width:760px;height:520px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.085),rgba(79,140,255,.03) 45%,transparent 72%);pointer-events:none"></div>
+<div style="position:relative;width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div data-rv style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:24px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">05 — AI ENGINEERING</div>
+<h2 data-rv style="margin:0 0 20px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.04em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .05s,transform 1s cubic-bezier(.16,1,.3,1) .05s">Engineering AI experiences.</h2>
+<p data-rv style="margin:0 0 56px;max-width:560px;font:400 15px/1.75 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s,transform .9s cubic-bezier(.16,1,.3,1) .12s">A model is easy. The interface around it is the hard part — capture, latency, streaming state, interruption, and the moment a user stops trusting it. Start the demo below to watch the pipeline I build light up, stage by stage.</p>
+
+<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:stretch">
+<div data-rv style="flex:1 1 420px;min-width:320px;background:#0B0B0B;border:1px solid rgba(255,255,255,.09);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.07)">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:7px;height:7px;border-radius:50%;background:{{ callDot }};box-shadow:0 0 10px {{ callGlow }}"></span>
+<span style="font:400 10.5px 'Geist Mono',monospace;letter-spacing:.18em;color:#c9c9c9">VOICE AGENT — {{ callState }}</span>
+</div>
+<span style="font:400 10px 'Geist Mono',monospace;letter-spacing:.14em;color:#8f8f8f">{{ callTimer }}</span>
+</div>
+<div data-transcript style="flex:1;min-height:300px;max-height:340px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ messages }}" as="m" hint-placeholder-count="3">
+<div style="display:flex;justify-content:{{ m.justify }}">
+<div style="max-width:78%;padding:11px 15px;border-radius:{{ m.radius }};background:{{ m.bg }};border:1px solid {{ m.border }}">
+<div style="font:400 9px 'Geist Mono',monospace;letter-spacing:.18em;color:#8f8f8f;margin-bottom:6px">{{ m.who }}</div>
+<div style="font:400 13.5px/1.6 'General Sans',sans-serif;color:{{ m.color }}">{{ m.text }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="padding:14px 20px 18px;border-top:1px solid rgba(255,255,255,.07)">
+<div style="display:flex;align-items:center;gap:3px;height:26px;margin-bottom:14px;opacity:{{ waveOp }};transition:opacity .5s ease">
+<sc-for list="{{ waveBars }}" as="b" hint-placeholder-count="26">
+<span style="flex:1;height:100%;background:linear-gradient(to top,rgba(79,140,255,.25),#4F8CFF);border-radius:2px;transform-origin:center;animation:vWave {{ b.dur }} ease-in-out {{ b.delay }} infinite"></span>
+</sc-for>
+</div>
+<div style="display:flex;gap:9px;align-items:center">
+<button data-magnetic data-cursor="{{ callCta }}" onClick="{{ toggleCall }}" style="font:600 12.5px 'General Sans',sans-serif;color:{{ callBtnText }};background:{{ callBtnBg }};border:1px solid {{ callBtnBorder }};padding:11px 22px;border-radius:24px;transition:box-shadow .35s ease">{{ callCta }}</button>
+<input data-ai-input placeholder="or type a question…" aria-label="Ask the agent" style="flex:1;min-width:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:11px 16px;font:400 12.5px 'General Sans',sans-serif;color:#fff;outline:none">
+</div>
+</div>
+</div>
+
+<div data-rv style="flex:1 1 380px;min-width:300px;background:#0B0B0B;border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:24px;display:flex;flex-direction:column;opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .08s,transform 1s cubic-bezier(.16,1,.3,1) .08s">
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;margin-bottom:22px">PIPELINE</div>
+<div style="display:flex;flex-direction:column;gap:0;flex:1">
+<sc-for list="{{ nodes }}" as="n" hint-placeholder-count="6">
+<div>
+<div style="display:flex;align-items:center;gap:14px;padding:13px 15px;border:1px solid {{ n.border }};border-radius:12px;background:{{ n.bg }};transition:border-color .45s ease,background .45s ease,transform .45s cubic-bezier(.16,1,.3,1);transform:translateX({{ n.shift }})">
+<span style="width:8px;height:8px;border-radius:50%;background:{{ n.dot }};flex:none;box-shadow:0 0 10px {{ n.glow }}"></span>
+<div style="flex:1;min-width:0">
+<div style="font:500 13px 'General Sans',sans-serif;color:{{ n.color }}">{{ n.label }}</div>
+<div style="font:400 9.5px 'Geist Mono',monospace;letter-spacing:.12em;color:#8f8f8f;margin-top:3px">{{ n.meta }}</div>
+</div>
+</div>
+<div style="width:1px;height:16px;margin-left:26px;background:{{ n.link }};transition:background .45s ease"></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,.07);margin-top:8px">
+<span style="font:400 9.5px 'Geist Mono',monospace;color:#9B9B9B;padding:6px 11px;border:1px solid rgba(255,255,255,.09);border-radius:20px;margin-top:14px">JWT</span>
+<span style="font:400 9.5px 'Geist Mono',monospace;color:#9B9B9B;padding:6px 11px;border:1px solid rgba(255,255,255,.09);border-radius:20px;margin-top:14px">OAuth</span>
+<span style="font:400 9.5px 'Geist Mono',monospace;color:#9B9B9B;padding:6px 11px;border:1px solid rgba(255,255,255,.09);border-radius:20px;margin-top:14px">Session Management</span>
+<span style="font:400 9.5px 'Geist Mono',monospace;color:#9B9B9B;padding:6px 11px;border:1px solid rgba(255,255,255,.09);border-radius:20px;margin-top:14px">SDK Distribution</span>
+</div>
+</div>
+</div>
+<p style="margin:18px 0 0;font:400 11px 'Geist Mono',monospace;letter-spacing:.1em;color:#7a7a7a">SIMULATED TRANSCRIPT — MIRRORS THE PRODUCTION CHATBOT SDK BEHAVIOUR</p>
+</div>
+</section>
+
+<section id="work" data-screen-label="Featured Projects" style="position:relative;padding:130px 0 0;border-top:1px solid rgba(255,255,255,.06)">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div data-rv style="font:400 10px 'Geist Mono',ui-monospace,monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:24px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">06 — SELECTED WORK</div>
+<h2 data-rv style="margin:0 0 20px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.04em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .05s,transform 1s cubic-bezier(.16,1,.3,1) .05s">Four platforms<br>in production.</h2>
+<p data-rv style="margin:0 0 80px;max-width:470px;font:400 15px/1.75 'General Sans',sans-serif;color:#9B9B9B;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s,transform .9s cubic-bezier(.16,1,.3,1) .12s">Commercial products built with teams at Verveo, Digiblock and Navneet Toptech. Screens are placeholders — the architecture, the ownership and the outcomes are not.</p>
+
+<div data-stack style="position:relative;padding-bottom:140px">
+<sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+<div data-stack-card style="position:sticky;top:{{ p.top }};margin-bottom:42px">
+<article data-tilt data-cursor="VIEW" style="position:relative;background:{{ p.bg }};border:1px solid rgba(255,255,255,.1);border-radius:24px;overflow:hidden;box-shadow:0 50px 100px -60px rgba(0,0,0,1),inset 0 1px 0 rgba(255,255,255,.08);display:flex;flex-wrap:wrap;transform-style:preserve-3d">
+<div style="position:absolute;top:-190px;right:-110px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,{{ p.glow }},transparent 70%);pointer-events:none"></div>
+<div style="flex:1 1 440px;min-width:300px;padding:44px 46px;display:flex;flex-direction:column;position:relative">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:26px">
+<span style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#4F8CFF">{{ p.index }}</span>
+<span style="width:22px;height:1px;background:rgba(255,255,255,.18)"></span>
+<span style="font:400 10px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f">{{ p.sector }}</span>
+</div>
+<h3 style="margin:0 0 16px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(28px,3vw,42px);line-height:1.04;letter-spacing:-.03em;color:#fff">{{ p.title }}</h3>
+<p style="margin:0 0 20px;max-width:430px;font:400 14.5px/1.72 'General Sans',sans-serif;color:#9B9B9B;text-wrap:pretty">{{ p.blurb }}</p>
+<div style="display:flex;gap:14px;margin:0 0 26px;padding:13px 15px;border:1px solid rgba(255,255,255,.07);border-radius:10px;background:rgba(255,255,255,.015);max-width:430px">
+<span style="font:400 9.5px 'Geist Mono',monospace;letter-spacing:.2em;color:#8f8f8f;padding-top:3px;flex:none">MY ROLE</span>
+<span style="font:400 13px/1.62 'General Sans',sans-serif;color:#c9c9c9;text-wrap:pretty">{{ p.role }}</span>
+</div>
+<div style="display:flex;gap:34px;flex-wrap:wrap;margin-bottom:30px">
+<div><div style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:24px;color:#fff;letter-spacing:-.02em">{{ p.statA }}</div><div style="font:400 9.5px 'Geist Mono',monospace;letter-spacing:.14em;color:#8f8f8f;margin-top:4px">{{ p.statALabel }}</div></div>
+<div><div style="font-family:'Clash Display',sans-serif;font-weight:600;font-size:24px;color:#fff;letter-spacing:-.02em">{{ p.statB }}</div><div style="font:400 9.5px 'Geist Mono',monospace;letter-spacing:.14em;color:#8f8f8f;margin-top:4px">{{ p.statBLabel }}</div></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:26px">
+<sc-for list="{{ p.stack }}" as="t" hint-placeholder-count="4">
+<span style="font:400 10px 'Geist Mono',monospace;color:#c9c9c9;padding:5px 10px;border:1px solid rgba(255,255,255,.09);border-radius:6px">{{ t.name }}</span>
+</sc-for>
+</div>
+<div style="display:flex;gap:9px;flex-wrap:wrap">
+<span data-magnetic data-cursor="OPEN" style="font:600 12px 'General Sans',sans-serif;color:#050505;background:#fff;padding:10px 20px;border-radius:22px;transition:box-shadow .35s ease" style-hover="box-shadow:0 12px 28px -12px rgba(255,255,255,.5)">Live Demo</span>
+<span data-magnetic data-cursor="OPEN" style="font:600 12px 'General Sans',sans-serif;color:#fff;padding:10px 20px;border-radius:22px;border:1px solid rgba(255,255,255,.14);transition:background .35s ease" style-hover="background:rgba(79,140,255,.12)">Case Study</span>
+</div>
+</div>
+<div style="flex:1 1 380px;min-width:280px;position:relative;background:rgba(0,0,0,.28);border-left:1px solid rgba(255,255,255,.09);min-height:380px;display:flex;align-items:center;justify-content:center;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.038) 0 10px,transparent 10px 20px)">
+<div style="position:absolute;inset:0;background:radial-gradient(circle at 60% 30%,rgba(79,140,255,.13),transparent 62%);pointer-events:none"></div>
+<span style="position:relative;font:400 9.5px 'Geist Mono',monospace;letter-spacing:.22em;color:#8f8f8f">{{ p.shot }}</span>
+</div>
+</article>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section data-screen-label="Tech stack" style="position:relative;padding:120px 0;border-top:1px solid rgba(255,255,255,.06);overflow:hidden">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto 50px">
+<div data-rv style="font:400 10px 'Geist Mono',monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:22px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">07 — STACK</div>
+<h2 data-rv style="margin:0;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(32px,4vw,58px);line-height:1;letter-spacing:-.035em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .05s,transform 1s cubic-bezier(.16,1,.3,1) .05s">Everything I reach for.</h2>
+</div>
+<sc-for list="{{ marquees }}" as="row" hint-placeholder-count="4">
+<div data-marquee-row style="padding:14px 0;border-top:1px solid rgba(255,255,255,.06);overflow:hidden;position:relative">
+<div style="position:absolute;left:0;top:0;bottom:0;z-index:2;display:flex;align-items:center;pointer-events:none;padding-left:max(48px,calc((100% - 1280px)/2));padding-right:40px;font:400 9.5px 'Geist Mono',monospace;letter-spacing:.2em;color:#4F8CFF;background:linear-gradient(90deg,#050505 0,#050505 76%,rgba(5,5,5,0) 100%)">{{ row.label }}</div>
+<div style="display:flex;width:max-content;gap:0;animation:vMarquee {{ row.dur }} linear infinite;{{ row.dir }}">
+<sc-for list="{{ row.items }}" as="i" hint-placeholder-count="14">
+<span style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,38px);letter-spacing:-.02em;color:{{ i.color }};padding:0 26px;white-space:nowrap">{{ i.name }}</span>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section id="terminal" data-screen-label="Terminal" style="position:relative;padding:120px 0 140px;border-top:1px solid rgba(255,255,255,.06)">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:40px">
+<div>
+<div data-rv style="font:400 10px 'Geist Mono',monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:22px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">08 — TERMINAL</div>
+<h2 data-rv style="margin:0;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(32px,4vw,58px);line-height:1;letter-spacing:-.035em;color:#fff;opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.16,1,.3,1) .05s,transform 1s cubic-bezier(.16,1,.3,1) .05s">Prefer the command line?</h2>
+</div>
+<div data-rv style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#8f8f8f;padding-bottom:8px;opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .1s,transform .9s cubic-bezier(.16,1,.3,1) .1s">TRY: help · whoami · skills · projects · hire</div>
+</div>
+<div data-rv data-cursor="TYPE" onClick="{{ focusTerminal }}" style="background:#0B0B0B;border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;box-shadow:0 40px 90px -60px rgba(0,0,0,1);opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)">
+<div style="display:flex;align-items:center;gap:8px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.015)">
+<span style="width:9px;height:9px;border-radius:50%;background:#2e2e2e"></span>
+<span style="width:9px;height:9px;border-radius:50%;background:#2e2e2e"></span>
+<span style="width:9px;height:9px;border-radius:50%;background:#2e2e2e"></span>
+<span style="font:400 10.5px 'Geist Mono',monospace;letter-spacing:.14em;color:#8f8f8f;margin-left:10px">vyshak@portfolio — zsh</span>
+</div>
+<div data-term-scroll style="height:360px;overflow-y:auto;padding:22px 24px;display:flex;flex-direction:column;gap:3px">
+<sc-for list="{{ termLines }}" as="l" hint-placeholder-count="4">
+<div style="white-space:pre-wrap;font:400 12.5px/1.75 'Geist Mono',ui-monospace,monospace;color:{{ l.color }}">{{ l.text }}</div>
+</sc-for>
+<div style="display:flex;align-items:center;gap:9px;margin-top:8px">
+<span style="font:400 12.5px 'Geist Mono',monospace;color:#4F8CFF">➜</span>
+<input data-term-input aria-label="Terminal input" autocomplete="off" spellcheck="false" style="flex:1;min-width:0;background:transparent;border:0;outline:none;font:400 12.5px 'Geist Mono',ui-monospace,monospace;color:#fff;caret-color:#4F8CFF">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="position:relative;padding:150px 0 100px;border-top:1px solid rgba(255,255,255,.06);overflow:hidden">
+<canvas data-field style="position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.85"></canvas>
+<div style="position:absolute;bottom:-260px;left:50%;transform:translateX(-50%);width:820px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.12),rgba(79,140,255,.045) 45%,transparent 72%);pointer-events:none"></div>
+<div style="position:relative;width:min(1280px,calc(100% - 96px));margin:0 auto;text-align:center">
+<div data-rv style="font:400 10px 'Geist Mono',monospace;letter-spacing:.26em;color:#8f8f8f;margin-bottom:34px;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">09 — CONTACT</div>
+<h2 data-rv style="margin:0 auto;max-width:900px;font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(40px,6.6vw,96px);line-height:.98;letter-spacing:-.04em;color:#fff;opacity:0;transform:translateY(30px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1) .05s,transform 1.1s cubic-bezier(.16,1,.3,1) .05s">Let's build something worth using.</h2>
+<p data-rv style="margin:30px auto 44px;max-width:460px;font:400 15px/1.75 'General Sans',sans-serif;color:#9B9B9B;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .12s,transform .9s cubic-bezier(.16,1,.3,1) .12s">Open to frontend and AI-interface roles, and to teams who care how the thing feels. Bengaluru or remote.</p>
+<div data-rv style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1) .18s,transform .9s cubic-bezier(.16,1,.3,1) .18s">
+<a href="mailto:vyshakharikumar98@gmail.com" data-magnetic data-cursor="EMAIL" style="font:600 14px 'General Sans',sans-serif;color:#050505;background:#fff;padding:16px 34px;border-radius:30px;transition:box-shadow .35s ease" style-hover="box-shadow:0 18px 40px -14px rgba(255,255,255,.55);color:#050505">vyshakharikumar98@gmail.com</a>
+<a href="https://www.linkedin.com/in/vyshak-harikumar98/" target="_blank" rel="noopener" data-magnetic data-cursor="OPEN" style="font:600 14px 'General Sans',sans-serif;color:#fff;padding:16px 30px;border-radius:30px;border:1px solid rgba(255,255,255,.14);transition:background .35s ease,border-color .35s ease" style-hover="background:rgba(79,140,255,.12);border-color:rgba(79,140,255,.45);color:#fff">LinkedIn</a>
+<a href="https://github.com/VYSHAK98" target="_blank" rel="noopener" data-magnetic data-cursor="OPEN" style="font:600 14px 'General Sans',sans-serif;color:#fff;padding:16px 30px;border-radius:30px;border:1px solid rgba(255,255,255,.14);transition:background .35s ease,border-color .35s ease" style-hover="background:rgba(79,140,255,.12);border-color:rgba(79,140,255,.45);color:#fff">GitHub</a>
+</div>
+</div>
+</section>
+
+<footer style="position:relative;padding:0 0 40px">
+<div style="width:min(1280px,calc(100% - 96px));margin:0 auto">
+<div data-divider style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:scaleX(0);transform-origin:center;transition:transform 1.4s cubic-bezier(.16,1,.3,1)"></div>
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;padding-top:34px">
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#8f8f8f">© 2026 VYSHAK HARIKUMAR — BENGALURU, IN</div>
+<div style="display:flex;gap:24px">
+<a href="https://github.com/VYSHAK98" target="_blank" rel="noopener" data-cursor="OPEN" style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#9B9B9B;transition:color .3s ease,text-shadow .3s ease" style-hover="color:#4F8CFF;text-shadow:0 0 16px rgba(79,140,255,.6)">GITHUB</a>
+<a href="https://www.linkedin.com/in/vyshak-harikumar98/" target="_blank" rel="noopener" data-cursor="OPEN" style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#9B9B9B;transition:color .3s ease,text-shadow .3s ease" style-hover="color:#4F8CFF;text-shadow:0 0 16px rgba(79,140,255,.6)">LINKEDIN</a>
+<a href="mailto:vyshakharikumar98@gmail.com" data-cursor="EMAIL" style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#9B9B9B;transition:color .3s ease,text-shadow .3s ease" style-hover="color:#4F8CFF;text-shadow:0 0 16px rgba(79,140,255,.6)">EMAIL</a>
+</div>
+<div style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#7a7a7a">BUILT WITH INTENT · ↑↑↓↓←→←→BA</div>
+</div>
+</div>
+</footer>
+
+<sc-if value="{{ devMode }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:70;pointer-events:none;background-image:linear-gradient(90deg,rgba(79,140,255,.09) 1px,transparent 1px);background-size:calc(min(1280px,100% - 96px)/12) 100%;background-position:max(48px,calc((100% - 1280px)/2)) 0;background-repeat:repeat-x"></div>
+<div style="position:fixed;left:20px;bottom:20px;z-index:75;display:flex;align-items:center;gap:10px;padding:9px 15px;border-radius:22px;border:1px solid rgba(79,140,255,.4);background:rgba(5,5,5,.86);backdrop-filter:blur(12px)">
+<span style="width:6px;height:6px;border-radius:50%;background:#4F8CFF;animation:vPulse 1.6s ease-in-out infinite"></span>
+<span style="font:400 10px 'Geist Mono',monospace;letter-spacing:.18em;color:#4F8CFF">DEV MODE · {{ fps }} FPS · GRID 12</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:14px;padding:15px 22px;border-radius:16px;border:1px solid rgba(79,140,255,.35);background:rgba(11,11,11,.94);backdrop-filter:blur(16px);box-shadow:0 24px 60px -24px rgba(0,0,0,1);animation:vToast 4s ease both">
+<div style="width:34px;height:34px;border-radius:10px;border:1px solid rgba(79,140,255,.4);display:flex;align-items:center;justify-content:center;font:500 13px 'Geist Mono',monospace;color:#4F8CFF">★</div>
+<div>
+<div style="font:400 9px 'Geist Mono',monospace;letter-spacing:.22em;color:#8f8f8f;margin-bottom:4px">ACHIEVEMENT UNLOCKED</div>
+<div style="font:500 13.5px 'General Sans',sans-serif;color:#fff">{{ toast }}</div>
+</div>
+</div>
+</sc-if>
+
+<a href="#contact" data-magnetic data-cursor="RESUME" aria-label="Download résumé" style="position:fixed;right:clamp(18px,2.4vw,30px);bottom:clamp(18px,2.4vw,30px);z-index:76;display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:30px;border:1px solid rgba(255,255,255,.14);background:rgba(10,10,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 40px -18px rgba(0,0,0,.9);font:600 12px 'General Sans',sans-serif;letter-spacing:.01em;color:#fff;transition:border-color .35s ease,background .35s ease,box-shadow .35s ease;animation:vRise .9s cubic-bezier(.16,1,.3,1) 4.5s both" style-hover="border-color:rgba(79,140,255,.5);background:rgba(79,140,255,.14);box-shadow:0 22px 46px -18px rgba(79,140,255,.5);color:#fff">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#4F8CFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1v8.2M3.6 6.1 7 9.5l3.4-3.4M2 12.4h10"></path></svg>
+<span>Résumé</span>
+</a>
+
+<div data-loader style="position:fixed;inset:0;z-index:100;background:#050505;pointer-events:none;animation:vIris 1.15s cubic-bezier(.76,0,.24,1) 2.95s both">
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;animation:vFadeOut .45s ease 2.75s both">
+<div style="position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid rgba(79,140,255,.5);animation:vRing 2.6s cubic-bezier(.22,1,.36,1) .15s infinite"></div>
+<div style="position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid rgba(79,140,255,.3);animation:vRing 2.6s cubic-bezier(.22,1,.36,1) .9s infinite"></div>
+<div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:26px">
+<div style="display:flex;gap:3px;font-family:'Clash Display',sans-serif;font-weight:500;font-size:clamp(34px,5.4vw,60px);letter-spacing:.12em;color:#fff">
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .72s both">V</span>
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .56s both">Y</span>
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .4s both">S</span>
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .4s both">H</span>
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .56s both">A</span>
+<span style="animation:vBlurIn .85s cubic-bezier(.16,1,.3,1) .72s both">K</span>
+</div>
+<div style="position:relative;height:18px;width:min(340px,80vw)">
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 11px 'Geist Mono',ui-monospace,monospace;letter-spacing:.32em;color:#9B9B9B;animation:vRoleCycle .75s ease 1.6s both">REACT DEVELOPER</div>
+<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 11px 'Geist Mono',ui-monospace,monospace;letter-spacing:.32em;color:#4F8CFF;animation:vRoleCycle .95s ease 2.15s both">CREATIVE FRONTEND ENGINEER</div>
+</div>
+</div>
+</div>
+</div>
+
+<div data-cursor-ring style="position:fixed;top:0;left:0;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:1px solid rgba(255,255,255,.4);z-index:110;pointer-events:none;opacity:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s ease,width .35s cubic-bezier(.16,1,.3,1),height .35s cubic-bezier(.16,1,.3,1),margin .35s cubic-bezier(.16,1,.3,1),background-color .35s ease,border-color .35s ease">
+<span data-cursor-label style="font:500 8.5px 'Geist Mono',ui-monospace,monospace;letter-spacing:.14em;color:#050505;opacity:0;transition:opacity .25s ease;white-space:nowrap"></span>
+</div>
+<div data-cursor-dot style="position:fixed;top:0;left:0;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#fff;z-index:111;pointer-events:none;opacity:0;transition:opacity .3s ease,transform .3s ease"></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;particleDensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.3,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+const EASE = 'cubic-bezier(.16,1,.3,1)';
+const PROJECTS = [
+  { index: '01', sector: 'AI · SAAS', title: 'AI Agent Platform', shot: 'AGENT CONSOLE — DASHBOARD', role: 'Frontend lead at Verveo Solutions — platform architecture, the live call console, and the Chatbot SDK the whole product speaks through.', blurb: 'A platform that runs inbound and outbound voice, SMS and email on behalf of businesses. Agents are configured, grounded in a knowledge base, and set loose on real conversations — with a live console watching every one.', statA: '4', statALabel: 'CHANNELS', statB: 'REAL-TIME', statBLabel: 'TRANSCRIPTS', stack: ['React', 'TypeScript', 'Redux', 'React Query', 'WebSockets'] },
+  { index: '02', sector: 'AVIATION · ENTERPRISE', title: 'Airport Revenue Management', shot: 'REVENUE DASHBOARD', role: 'Lead frontend engineer at Verveo Solutions — empty repository to production system, owned end to end for US clients.', blurb: 'Built from zero as lead frontend for US-based clients: lease management, rent collection, revenue tracking and the reporting layer airports run their commercial operations on.', statA: '0→1', statALabel: 'BUILT FROM SCRATCH', statB: 'US', statBLabel: 'CLIENT BASE', stack: ['React', 'TypeScript', 'Material UI', 'REST'] },
+  { index: '03', sector: 'WEB3 · SOLANA', title: 'Solana Platform', shot: 'WALLET & TRANSACTION FLOW', role: 'Frontend and Node services at Digiblock Network Solutions — the full surface, plus the component library the team built inside.', blurb: 'An end-to-end Solana product — Next.js interface, Node services behind it. Wallet-aware flows, transaction state and on-chain data presented so that nothing about it feels experimental.', statA: 'E2E', statALabel: 'FRONT + BACK', statB: 'Next.js', statBLabel: 'RENDER LAYER', stack: ['Next.js', 'Node.js', 'Express', 'Solana'] },
+  { index: '04', sector: 'EDTECH · SCALE', title: 'Learning Management System', shot: 'CLASSROOM MODULE', role: 'Feature development and the performance pass at Navneet Toptech — complex academic logic, then making it load fast on school hardware.', blurb: 'Used by schools across India. Complex academic business logic, dynamic content management, and a performance pass that mattered because a slow load means a stalled classroom.', statA: 'India', statALabel: 'SCHOOL NETWORK', statB: '↓ LCP', statBLabel: 'PERF WORK', stack: ['React', 'Node.js', 'TypeScript', 'MongoDB'] }
+];
+const EXPERIENCES = [
+  { company: 'Verveo Solutions', role: 'Frontend Developer — Platform Lead', period: 'NOV 2025 → PRESENT', location: 'BENGALURU · CURRENT', desc: 'Lead the frontend of an AI agent platform running inbound/outbound calls, SMS and email — knowledge bases, workflow automation and live conversation in one console.', stack: ['React', 'TypeScript', 'Redux', 'React Query', 'WebSockets'] },
+  { company: 'Navneet Toptech', role: 'Software Development Engineer I', period: 'SEP 2024 → NOV 2025', location: 'BENGALURU · EDTECH', desc: 'A learning management system used by schools across India — complex academic logic, and a performance pass felt by an entire classroom at once.', stack: ['React', 'TypeScript', 'Node.js', 'MongoDB'] },
+  { company: 'Digiblock Network', role: 'Front-End Developer', period: 'JAN 2024 → AUG 2024', location: 'REMOTE · WEB3', desc: 'A Solana-based platform taken end to end — wallet-aware flows, transaction states and on-chain data, plus a reusable component library for the team.', stack: ['Next.js', 'Solana', 'Node.js', 'Express'] },
+  { company: 'Luminar Technolab', role: 'MERN Stack Development Intern', period: 'JUL 2023 → DEC 2023', location: 'ERNAKULAM · THE START', desc: 'Where the fundamentals were built: full-stack apps in React, Node, Express and MongoDB, and the debugging instinct that comes from owning something end to end.', stack: ['React', 'Node.js', 'Express', 'MongoDB'] }
+];
+const NODES = [
+  { label: 'Voice Capture', meta: 'MIC STREAM · VAD' },
+  { label: 'Speech-to-Text', meta: 'STREAMING STT' },
+  { label: 'LLM Agent', meta: 'TOOL CALLING' },
+  { label: 'Knowledge Base', meta: 'GROUNDED RETRIEVAL' },
+  { label: 'Transcript Stream', meta: 'LIVE TO CLIENT' },
+  { label: 'Workflow Automation', meta: 'CRM · SMS · EMAIL' }
+];
+const SCRIPT = [
+  { who: 'AGENT', text: 'Thanks for calling Northgate Aviation — this is Ava. How can I help today?', stage: 5 },
+  { who: 'CALLER', text: 'Hi, I need to check the rent invoice for our terminal lease.', stage: 0 },
+  { who: 'AGENT', text: 'Of course. Pulling up the lease record now — one moment.', stage: 3 },
+  { who: 'AGENT', text: 'Invoice #4482 was issued on the 1st for ₹2,40,000, due in eleven days. Want me to email a copy?', stage: 4 },
+  { who: 'CALLER', text: 'Yes please, and add a reminder two days before.', stage: 0 },
+  { who: 'AGENT', text: 'Sent, and the reminder is scheduled. Anything else I can take care of?', stage: 5 }
+];
+const REPLIES = {
+  default: 'Good question. In production this routes to the agent with knowledge-base grounding — here it is a scripted stand-in for the real SDK.',
+  stack: 'The console is React and TypeScript with Redux and React Query, streaming transcripts over WebSockets, wrapped in a published Chatbot SDK.',
+  hire: 'Vyshak is open to frontend and AI-interface roles. vyshakharikumar98@gmail.com is the fastest route.',
+  latency: 'Perceived latency is handled with optimistic UI, token streaming and interruption support — the user never waits on a spinner.'
+};
+const HELP = [
+  ['help', 'list available commands'],
+  ['whoami', 'who is behind this site'],
+  ['skills', 'core technical stack'],
+  ['projects', 'platforms shipped'],
+  ['experience', 'career timeline'],
+  ['contact', 'how to reach me'],
+  ['hire', 'npm run hire-vyshak'],
+  ['clear', 'clear the terminal']
+];
+
+class Component extends DCLogic {
+  state = {
+    devMode: false, fps: 60, toast: null,
+    calling: false, callTimer: '00:00', stage: -1,
+    messages: [{ who: 'SYSTEM', text: 'Press Start Call to run a simulated voice session, or type a question below.' }],
+    termLines: [
+      { text: 'vyshak-portfolio v1.0.0 — interactive shell', color: '#8f8f8f' },
+      { text: "type 'help' to see what this thing does", color: '#8f8f8f' },
+      { text: '', color: '#8f8f8f' }
+    ]
+  };
+
+  constructor(p) {
+    super(p);
+    this.rootRef = el => { if (el && this.root !== el) { this.root = el; requestAnimationFrame(() => this.boot()); } };
+    this.focusTerminal = () => { const i = this.root && this.root.querySelector('[data-term-input]'); if (i) i.focus(); };
+    this.toggleCall = () => this.state.calling ? this.endCall(true) : this.startCall();
+    this.timers = [];
+    this.konami = [];
+    this.audio = null;
+    this.soundOn = false;
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    this.timers.forEach(clearTimeout);
+    clearInterval(this._callInt);
+  }
+
+  boot() {
+    const root = this.root;
+    this.reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    root.querySelectorAll('canvas[data-field]').forEach(c => this.field(c));
+    this.initReveals();
+    this.initCursor();
+    this.initInteractive();
+    this.initTerminal();
+    this.initAiInput();
+    this.initMarquees();
+    this.initStickyCols();
+    this.initKeys();
+    this.loop();
+    document.body.style.overflow = 'hidden';
+    this.timers.push(setTimeout(() => { document.body.style.overflow = ''; const l = root.querySelector('[data-loader]'); if (l) l.style.display = 'none'; }, this.reduce ? 200 : 4100));
+  }
+
+  /* ---------- particles ---------- */
+  field(canvas) {
+    const ctx = canvas.getContext('2d');
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    let CW = 0, CH = 0, grad = null;
+    const size = () => {
+      const r = canvas.getBoundingClientRect();
+      if (!r.width || !r.height) return false;
+      CW = r.width; CH = r.height;
+      canvas.width = Math.round(r.width * dpr); canvas.height = Math.round(r.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); return true;
+    };
+    if (!size()) { requestAnimationFrame(() => this.field(canvas)); return; }
+    grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 260);
+    grad.addColorStop(0, 'rgba(79,140,255,.085)'); grad.addColorStop(1, 'rgba(79,140,255,0)');
+    let visible = true; // fail open: paint until an observer tells us we are off-screen
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { rootMargin: '120px' }).observe(canvas);
+    const density = this.props.particleDensity ?? 1;
+    const N = Math.round(110 * density);
+    const pts = Array.from({ length: N }, (_, i) => ({
+      x: Math.random(), y: Math.random(), z: Math.random() * 0.9 + 0.1,
+      r: Math.random() * 1.35 + 0.35,
+      vx: (Math.random() - .5) * 0.00022, vy: (Math.random() - .5) * 0.00016, a: i % 12 === 0
+    }));
+    const m = { x: 0, y: 0, tx: 0, ty: 0, px: -9999, py: -9999 };
+    const host = canvas.parentElement;
+    host.addEventListener('pointermove', e => {
+      const r = canvas.getBoundingClientRect();
+      m.px = e.clientX - r.left; m.py = e.clientY - r.top;
+      m.tx = (m.px / r.width - .5) * 2; m.ty = (m.py / r.height - .5) * 2;
+    });
+    host.addEventListener('pointerleave', () => { m.tx = 0; m.ty = 0; m.px = -9999; m.py = -9999; });
+    let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(size, 150); });
+    const buckets = Array.from({ length: 12 }, () => []);
+    const draw = () => {
+      if (!visible || !CW || !CH) return;
+      const w = CW, h = CH;
+      ctx.clearRect(0, 0, w, h);
+      m.x += (m.tx - m.x) * .055; m.y += (m.ty - m.y) * .055;
+      if (m.px > -9000) {
+        ctx.globalAlpha = 1; ctx.save();
+        ctx.translate(m.px, m.py); ctx.fillStyle = grad;
+        ctx.fillRect(-260, -260, 520, 520); ctx.restore();
+      }
+      // bucket by colour × quantised alpha so 110 particles cost ~12 fills, not 110
+      const BUCKETS = 6;
+      for (let i = 0; i < buckets.length; i++) buckets[i].length = 0;
+      for (const p of pts) {
+        if (!this.reduce) { p.x += p.vx; p.y += p.vy; }
+        if (p.x < -.05) p.x += 1.1; else if (p.x > 1.05) p.x -= 1.1;
+        if (p.y < -.05) p.y += 1.1; else if (p.y > 1.05) p.y -= 1.1;
+        const px = p.x * w + m.x * p.z * 32, py = p.y * h + m.y * p.z * 22;
+        let a = .05 + p.z * .3;
+        if (m.px > -9000) {
+          const dx = px - m.px, dy = py - m.py, d2 = dx * dx + dy * dy;
+          if (d2 < 32400) a += (1 - Math.sqrt(d2) / 180) * .42 * p.z;
+        }
+        const bi = Math.min(BUCKETS - 1, Math.round(Math.min(a, .85) / .85 * (BUCKETS - 1)));
+        buckets[(p.a ? BUCKETS : 0) + bi].push(px, py, p.r * (.45 + p.z));
+      }
+      for (let b = 0; b < buckets.length; b++) {
+        const arr = buckets[b];
+        if (!arr.length) continue;
+        ctx.globalAlpha = ((b % BUCKETS) / (BUCKETS - 1)) * .85 || .04;
+        ctx.fillStyle = b >= BUCKETS ? '#4F8CFF' : '#ffffff';
+        ctx.beginPath();
+        for (let i = 0; i < arr.length; i += 3) {
+          ctx.moveTo(arr[i] + arr[i + 2], arr[i + 1]);
+          ctx.arc(arr[i], arr[i + 1], arr[i + 2], 0, 6.2832);
+        }
+        ctx.fill();
+      }
+    };
+    (this.fields = this.fields || []).push(draw);
+  }
+
+  /* ---------- reveals + counters ---------- */
+  initReveals() {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translate(0,0)';
+      io.unobserve(e.target);
+    }), { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    this.root.querySelectorAll('[data-rv]').forEach(el => io.observe(el));
+    // fail open: if observers never fire, content must still be readable
+    this.timers.push(setTimeout(() => {
+      this.root.querySelectorAll('[data-rv]').forEach(el => {
+        if (getComputedStyle(el).opacity !== '0') return;
+        el.style.transition = 'none';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      this.root.querySelectorAll('[data-count]').forEach(el => {
+        if (el.textContent === '0') el.textContent = el.dataset.count;
+      });
+      this.root.querySelectorAll('[data-divider]').forEach(el => { el.style.transform = 'scaleX(1)'; });
+    }, 1600));
+
+    const co = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      co.unobserve(e.target);
+      const target = parseFloat(e.target.dataset.count) || 0;
+      const t0 = performance.now(), dur = 1500;
+      const tick = t => {
+        const p = Math.min(1, (t - t0) / dur), v = 1 - Math.pow(1 - p, 3);
+        e.target.textContent = Math.round(v * target);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }), { threshold: .5 });
+    this.root.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+    const fo = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.transform = 'scaleX(1)'; fo.unobserve(e.target); }
+    }), { threshold: .6 });
+    this.root.querySelectorAll('[data-divider]').forEach(el => fo.observe(el));
+  }
+
+  /* career journey: driven by the inner scroll container, not the page */
+  initExperienceScroll() {
+    const root = this.root;
+    const scroller = root.querySelector('[data-exp-scroll]');
+    if (!scroller) return;
+    const rows = [...scroller.querySelectorAll('[data-exp-row]')].map(row => ({
+      row, name: row.querySelector('[data-exp-name]'), date: row.querySelector('[data-exp-date]'),
+      desc: row.querySelector('[data-exp-desc]'), pills: row.querySelector('[data-exp-pills]')
+    }));
+    const ticks = [...root.querySelectorAll('[data-exp-tick]')];
+    const fill = root.querySelector('[data-exp-fill]'), orb = root.querySelector('[data-exp-orb]');
+    let last = -1, ticking = false;
+    const apply = () => {
+      ticking = false;
+      const max = scroller.scrollHeight - scroller.clientHeight;
+      const pct = max > 0 ? Math.max(0, Math.min(1, scroller.scrollTop / max)) : 0;
+      const p = Math.round(pct * 100);
+      if (fill) fill.style.height = p + '%';
+      if (orb) orb.style.top = p + '%';
+      // active row derives from the same fraction that drives the orb, so the two can never desync
+      const idx = rows.length > 1 ? Math.min(rows.length - 1, Math.round(pct * (rows.length - 1))) : 0;
+      if (idx === last) return;
+      last = idx;
+      rows.forEach((it, i) => {
+        const on = i === idx;
+        it.row.style.opacity = on ? '1' : i < idx ? '.6' : '.4';
+        if (it.name) { it.name.style.color = on ? '#fff' : '#5a5a5a'; it.name.style.transform = on ? 'scale(1.02)' : 'scale(1)'; }
+        if (it.date) it.date.style.color = on ? '#9dbcff' : '#6b6b6b';
+        if (it.desc) it.desc.style.color = on ? 'rgba(255,255,255,.78)' : '#6f6f6f';
+        if (it.pills) { it.pills.style.transform = on ? 'translateY(0)' : 'translateY(6px)'; it.pills.style.opacity = on ? '1' : '.55'; }
+      });
+      ticks.forEach((tick, i) => {
+        const passed = i <= idx;
+        tick.style.background = passed ? '#eaf1ff' : 'rgba(255,255,255,.22)';
+        tick.style.boxShadow = passed ? '0 0 8px rgba(79,140,255,.7)' : 'none';
+      });
+    };
+    scroller.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } }, { passive: true });
+    apply();
+  }
+
+  /* marquee rows only animate while on screen */
+  initMarquees() {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const t = e.target.querySelector('[style*="vMarquee"]');
+      if (t) t.style.animationPlayState = e.isIntersecting ? '' : 'paused';
+    }), { rootMargin: '80px' });
+    this.root.querySelectorAll('[data-marquee-row]').forEach(el => io.observe(el));
+  }
+
+  /* sticky only while the columns are genuinely side by side */
+  initStickyCols() {
+    const cols = [...this.root.querySelectorAll('[data-sticky-col]')];
+    if (!cols.length) return;
+    const apply = () => cols.forEach(c => {
+      const sib = c.parentElement.children;
+      const sideBySide = sib.length > 1 && sib[0].getBoundingClientRect().top === sib[1].getBoundingClientRect().top;
+      c.style.position = sideBySide && innerWidth >= 1000 ? 'sticky' : 'static';
+    });
+    cols.forEach(c => { c.style.position = 'static'; });
+    requestAnimationFrame(apply);
+    addEventListener('resize', () => { cols.forEach(c => { c.style.position = 'static'; }); requestAnimationFrame(apply); });
+  }
+
+  /* ---------- cursor / magnetic / tilt ---------- */
+  initCursor() {
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const dot = this.root.querySelector('[data-cursor-dot]');
+    const ring = this.root.querySelector('[data-cursor-ring]');
+    const label = this.root.querySelector('[data-cursor-label]');
+    const c = { x: innerWidth / 2, y: innerHeight / 2, rx: innerWidth / 2, ry: innerHeight / 2 };
+    addEventListener('pointermove', e => {
+      c.x = e.clientX; c.y = e.clientY;
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+      dot.style.transform = `translate(${c.x}px,${c.y}px)`;
+      const t = e.target.closest('[data-cursor]');
+      const txt = t ? t.dataset.cursor : '';
+      if (txt !== this._ctxt) {
+        this._ctxt = txt;
+        if (txt) {
+          ring.style.width = ring.style.height = '58px';
+          ring.style.margin = '-29px 0 0 -29px';
+          ring.style.background = '#fff'; ring.style.borderColor = '#fff';
+          label.textContent = txt; label.style.opacity = '1';
+        } else {
+          ring.style.width = ring.style.height = '38px';
+          ring.style.margin = '-19px 0 0 -19px';
+          ring.style.background = 'transparent'; ring.style.borderColor = 'rgba(255,255,255,.4)';
+          label.style.opacity = '0';
+        }
+      }
+    }, { passive: true });
+    addEventListener('pointerleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    this.cursorTick = () => {
+      c.rx += (c.x - c.rx) * .17; c.ry += (c.y - c.ry) * .17;
+      ring.style.transform = `translate(${c.rx}px,${c.ry}px)`;
+    };
+  }
+
+  initInteractive() {
+    this.root.querySelectorAll('[data-magnetic]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) * .28;
+        const dy = (e.clientY - (r.top + r.height / 2)) * .38;
+        el.style.transition = 'transform .18s ease-out';
+        el.style.transform = `translate(${dx}px,${dy}px)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = `transform .6s ${EASE}`;
+        el.style.transform = 'translate(0,0)';
+      });
+    });
+    this.root.querySelectorAll('[data-tilt]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * -6;
+        const ry = ((e.clientX - r.left) / r.width - .5) * 8;
+        el.style.transition = 'transform .2s ease-out';
+        el.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = `transform .8s ${EASE}`;
+        el.style.transform = 'perspective(1200px) rotateX(0) rotateY(0)';
+      });
+    });
+    this.root.querySelectorAll('a[href],button,[data-magnetic]').forEach(el => {
+      el.addEventListener('pointerenter', () => this.tick(880, .03));
+    });
+    const soundBtn = this.root.querySelector('[data-sound]');
+    const soundDot = this.root.querySelector('[data-sound-dot]');
+    if (soundBtn) soundBtn.addEventListener('click', () => {
+      this.soundOn = !this.soundOn;
+      soundDot.style.background = this.soundOn ? '#4F8CFF' : '#3a3a3a';
+      soundDot.style.boxShadow = this.soundOn ? '0 0 10px rgba(79,140,255,.9)' : 'none';
+      if (this.soundOn) this.tick(1200, .05);
+    });
+    const logo = this.root.querySelector('[data-logo]');
+    if (logo) logo.addEventListener('dblclick', () => {
+      const t = this.root.querySelector('#terminal');
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 60, behavior: 'smooth' });
+      setTimeout(() => this.focusTerminal(), 700);
+      this.unlock('Hidden terminal found');
+    });
+  }
+
+  tick(freq, gain) {
+    if (!this.soundOn) return;
+    try {
+      this.audio = this.audio || new (window.AudioContext || window.webkitAudioContext)();
+      const o = this.audio.createOscillator(), g = this.audio.createGain();
+      o.frequency.value = freq; o.type = 'sine';
+      g.gain.setValueAtTime(gain, this.audio.currentTime);
+      g.gain.exponentialRampToValueAtTime(.0001, this.audio.currentTime + .08);
+      o.connect(g).connect(this.audio.destination); o.start(); o.stop(this.audio.currentTime + .09);
+    } catch (e) { /* no audio */ }
+  }
+
+  unlock(text) {
+    this.setState({ toast: text });
+    this.timers.push(setTimeout(() => this.setState({ toast: null }), 4200));
+  }
+
+  /* ---------- scroll engine ---------- */
+  loop() {
+    const root = this.root;
+    const bar = root.querySelector('[data-progress]');
+    const hp = root.querySelector('[data-hero-parallax]');
+    const parallax = [...root.querySelectorAll('[data-parallax]')];
+    // one flat list of {card, next, live} — no per-frame querySelectorAll
+    const groups = [...root.querySelectorAll('[data-stack]')].map(s => [...s.querySelectorAll('[data-stack-card]')]);
+    const items = [];
+    groups.forEach(cards => cards.forEach((card, i) => {
+      const rec = { card, next: cards[i + 1] || null, live: false, lastP: -1 };
+      items.push(rec);
+      new IntersectionObserver(es => { rec.live = es[0].isIntersecting; }, { rootMargin: '60% 0px' }).observe(card);
+    }));
+    const pItems = parallax.map(el => {
+      const rec = { el, amt: parseFloat(el.dataset.parallax), live: false, lastV: null };
+      new IntersectionObserver(es => { rec.live = es[0].isIntersecting; }, { rootMargin: '30% 0px' }).observe(el);
+      return rec;
+    });
+    this.initExperienceScroll();
+
+    let docMax = 0;
+    const remeasure = () => { docMax = document.documentElement.scrollHeight - innerHeight; };
+    remeasure();
+    let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(remeasure, 150); });
+    addEventListener('scroll', () => { if (!this._sTO) this._sTO = setTimeout(() => { this._sTO = null; remeasure(); }, 400); }, { passive: true });
+
+    const step = () => {
+      // ---- READ PHASE (no writes) ----
+      const sy = scrollY, vh = innerHeight;
+      const reads = [];
+      for (const it of items) {
+        if (!it.live || !it.next) { reads.push(null); continue; }
+        const r = it.card.getBoundingClientRect(), nr = it.next.getBoundingClientRect();
+        reads.push(Math.max(0, Math.min(1, (r.bottom - nr.top) / (r.height * .9))));
+      }
+      const pReads = pItems.map(it => {
+        if (!it.live) return null;
+        const r = it.el.getBoundingClientRect();
+        return Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+      });
+
+
+      // ---- WRITE PHASE ----
+      if (bar) bar.style.transform = `scaleX(${docMax > 0 ? Math.min(1, sy / docMax) : 0})`;
+      items.forEach((it, i) => {
+        const raw = reads[i];
+        if (raw === null) {
+          if (it.lastP !== 0) { it.card.style.transform = 'none'; it.card.style.filter = 'none'; it.lastP = 0; }
+          return;
+        }
+        const p = Math.round(raw * 50) / 50; // quantise — skip sub-perceptual writes
+        if (p === it.lastP) return;
+        it.lastP = p;
+        it.card.style.transform = p > 0 ? `scale(${1 - p * .045}) translateY(${-p * 10}px)` : 'none';
+        it.card.style.filter = p > .02 ? `brightness(${(1 - p * .34).toFixed(3)}) saturate(${(1 - p * .25).toFixed(3)})` : 'none';
+      });
+      pItems.forEach((it, i) => {
+        const c = pReads[i];
+        if (c === null) return;
+        const v = Math.round(c * it.amt);
+        if (v === it.lastV) return;
+        it.lastV = v;
+        it.el.style.transform = `translateY(${v}px)`;
+      });
+      if (hp && this.mouseN) hp.style.transform = `translate(${(this.mouseN.x * 8).toFixed(1)}px,${(this.mouseN.y * 6).toFixed(1)}px)`;
+      if (this.cursorTick) this.cursorTick();
+      if (this.fields && !this.reduce) this.fields.forEach(f => f());
+
+      if (this.state.devMode) {
+        const now = performance.now();
+        this._frames = (this._frames || 0) + 1;
+        if (!this._fpsT) this._fpsT = now;
+        if (now - this._fpsT > 500) {
+          this.setState({ fps: Math.round(this._frames * 1000 / (now - this._fpsT)) });
+          this._frames = 0; this._fpsT = now;
+        }
+      }
+      this._raf = requestAnimationFrame(step);
+    };
+    addEventListener('pointermove', e => { this.mouseN = { x: (e.clientX / innerWidth - .5) * 2, y: (e.clientY / innerHeight - .5) * 2 }; }, { passive: true });
+    step();
+  }
+
+  /* ---------- terminal ---------- */
+  initTerminal() {
+    const input = this.root.querySelector('[data-term-input]');
+    if (!input) return;
+    input.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      const cmd = input.value.trim();
+      input.value = '';
+      this.runCommand(cmd);
+    });
+  }
+
+  push(lines) {
+    this.setState(s => ({ termLines: [...s.termLines, ...lines] }), () => {
+      const box = this.root.querySelector('[data-term-scroll]');
+      if (box) box.scrollTop = box.scrollHeight;
+    });
+  }
+
+  runCommand(raw) {
+    const cmd = raw.toLowerCase();
+    const out = [{ text: `➜  ${raw}`, color: '#4F8CFF' }];
+    this.tick(1400, .04);
+    if (!cmd) { this.push([]); return; }
+    if (cmd === 'clear') { this.setState({ termLines: [] }); return; }
+    if (cmd === 'help') {
+      out.push(...HELP.map(([c, d]) => ({ text: `  ${c.padEnd(12)} ${d}`, color: '#9B9B9B' })), { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'whoami') {
+      out.push(
+        { text: 'Vyshak Harikumar', color: '#ffffff' },
+        { text: '  Frontend Engineer — React · TypeScript · Next.js', color: '#9B9B9B' },
+        { text: '  AI interfaces, micro-frontend architecture, enterprise scale', color: '#9B9B9B' },
+        { text: '  Bengaluru, India · 3+ years', color: '#9B9B9B' }, { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'skills') {
+      out.push(
+        { text: 'core      React · TypeScript · Next.js · Redux · React Query', color: '#9B9B9B' },
+        { text: 'ui        Tailwind · Material UI · design systems', color: '#9B9B9B' },
+        { text: 'backend   Node · Express · MongoDB · PostgreSQL · REST', color: '#9B9B9B' },
+        { text: 'ai        STT · voice capture · streaming transcripts · LLM UX', color: '#9B9B9B' },
+        { text: 'craft     GSAP · Three.js · motion design', color: '#9B9B9B' }, { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'projects') {
+      out.push(...PROJECTS.map(p => ({ text: `  ${p.index}  ${p.title.padEnd(30)} ${p.sector}`, color: '#c9c9c9' })), { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'experience') {
+      out.push(
+        { text: '  2025 → now   Verveo Solutions      Frontend Developer, platform lead', color: '#c9c9c9' },
+        { text: '  2024 → 2025  Navneet Toptech       SDE I, LMS at national scale', color: '#c9c9c9' },
+        { text: '  2024         Digiblock Network     Frontend, Solana platform E2E', color: '#c9c9c9' },
+        { text: '  2023         Luminar Technolab     MERN intern', color: '#c9c9c9' }, { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'contact') {
+      out.push(
+        { text: '  email      vyshakharikumar98@gmail.com', color: '#c9c9c9' },
+        { text: '  github     github.com/VYSHAK98', color: '#c9c9c9' },
+        { text: '  linkedin   linkedin.com/in/vyshak-harikumar98', color: '#c9c9c9' }, { text: '', color: '#8f8f8f' });
+    } else if (cmd === 'hire' || cmd.includes('hire-vyshak')) {
+      this.push(out);
+      const seq = [
+        { text: '  resolving candidates…', color: '#8f8f8f', d: 260 },
+        { text: '  ✓ react            compatible', color: '#9B9B9B', d: 520 },
+        { text: '  ✓ typescript       compatible', color: '#9B9B9B', d: 700 },
+        { text: '  ✓ ai-interfaces    compatible', color: '#9B9B9B', d: 880 },
+        { text: '', color: '#8f8f8f', d: 1000 },
+        { text: '  Hiring Successful ✦', color: '#4F8CFF', d: 1200 },
+        { text: '  reach out: vyshakharikumar98@gmail.com', color: '#ffffff', d: 1340 },
+        { text: '', color: '#8f8f8f', d: 1400 }
+      ];
+      seq.forEach(l => this.timers.push(setTimeout(() => this.push([{ text: l.text, color: l.color }]), l.d)));
+      this.timers.push(setTimeout(() => this.unlock('npm run hire-vyshak — successful'), 1400));
+      return;
+    } else {
+      out.push({ text: `  command not found: ${raw} — try 'help'`, color: '#8f8f8f' }, { text: '', color: '#8f8f8f' });
+    }
+    this.push(out);
+  }
+
+  /* ---------- ai demo ---------- */
+  initAiInput() {
+    const input = this.root.querySelector('[data-ai-input]');
+    if (!input) return;
+    input.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' || !input.value.trim()) return;
+      const q = input.value.trim(); input.value = '';
+      this.say('CALLER', q, 0);
+      const l = q.toLowerCase();
+      const reply = l.includes('stack') || l.includes('built') ? REPLIES.stack
+        : l.includes('hire') || l.includes('job') || l.includes('role') ? REPLIES.hire
+          : l.includes('latency') || l.includes('fast') || l.includes('speed') ? REPLIES.latency
+            : REPLIES.default;
+      [1, 2, 3, 4].forEach((s, i) => this.timers.push(setTimeout(() => this.setState({ stage: s }), 220 + i * 240)));
+      this.timers.push(setTimeout(() => this.say('AGENT', reply, 4), 1180));
+    });
+  }
+
+  say(who, text, stage) {
+    this.setState(s => ({ messages: [...s.messages, { who, text }], stage }), () => {
+      const box = this.root.querySelector('[data-transcript]');
+      if (box) box.scrollTop = box.scrollHeight;
+    });
+  }
+
+  startCall() {
+    this.setState({ calling: true, messages: [], stage: 0, callTimer: '00:00' });
+    let sec = 0;
+    clearInterval(this._callInt);
+    this._callInt = setInterval(() => {
+      sec++;
+      this.setState({ callTimer: `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}` });
+    }, 1000);
+    SCRIPT.forEach((m, i) => {
+      this.timers.push(setTimeout(() => { if (this.state.calling) { this.say(m.who, m.text, m.stage); this.tick(660, .025); } }, 700 + i * 2300));
+    });
+    this.timers.push(setTimeout(() => { if (this.state.calling) this.endCall(false); }, 700 + SCRIPT.length * 2300 + 900));
+  }
+
+  endCall(manual) {
+    clearInterval(this._callInt);
+    this.setState({ calling: false, stage: -1 });
+    if (!manual) this.say('SYSTEM', 'Call complete. Transcript streamed live, then persisted to the session record.', -1);
+  }
+
+  /* ---------- easter eggs ---------- */
+  initKeys() {
+    const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    addEventListener('keydown', e => {
+      this.konami.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
+      if (this.konami.length > code.length) this.konami.shift();
+      if (this.konami.join(',') === code.join(',')) {
+        this.setState(s => ({ devMode: !s.devMode }));
+        this.unlock(this.state.devMode ? 'Dev mode off' : 'Konami code — dev mode on');
+        this.konami = [];
+      }
+    });
+  }
+
+  /* ---------- render values ---------- */
+  renderVals() {
+    const s = this.state;
+    const nodes = NODES.map((n, i) => {
+      const active = s.stage === i, past = s.stage > i;
+      return {
+        label: n.label, meta: n.meta,
+        border: active ? 'rgba(79,140,255,.55)' : past ? 'rgba(79,140,255,.2)' : 'rgba(255,255,255,.08)',
+        bg: active ? 'rgba(79,140,255,.1)' : 'rgba(255,255,255,.012)',
+        dot: active ? '#4F8CFF' : past ? 'rgba(79,140,255,.45)' : '#2e2e2e',
+        glow: active ? 'rgba(79,140,255,.8)' : 'transparent',
+        color: active ? '#fff' : '#c9c9c9',
+        shift: active ? '8px' : '0px',
+        link: i === NODES.length - 1 ? 'transparent' : past || active ? 'rgba(79,140,255,.5)' : 'rgba(255,255,255,.08)'
+      };
+    });
+
+    const messages = s.messages.map(m => {
+      const agent = m.who === 'AGENT', sys = m.who === 'SYSTEM';
+      return {
+        who: m.who, text: m.text,
+        justify: agent || sys ? 'flex-start' : 'flex-end',
+        radius: agent || sys ? '4px 14px 14px 14px' : '14px 14px 4px 14px',
+        bg: sys ? 'transparent' : agent ? 'rgba(79,140,255,.09)' : 'rgba(255,255,255,.045)',
+        border: sys ? 'rgba(255,255,255,.06)' : agent ? 'rgba(79,140,255,.22)' : 'rgba(255,255,255,.08)',
+        color: sys ? '#8f8f8f' : '#fff'
+      };
+    });
+
+    const TINTS = [
+      { bg: 'linear-gradient(158deg,oklch(.285 .062 262) 0%,oklch(.17 .04 262) 80%)', glow: 'rgba(79,140,255,.2)' },
+      { bg: 'linear-gradient(158deg,oklch(.275 .055 232) 0%,oklch(.165 .036 232) 80%)', glow: 'rgba(79,180,255,.16)' },
+      { bg: 'linear-gradient(158deg,oklch(.275 .062 292) 0%,oklch(.165 .04 292) 80%)', glow: 'rgba(139,120,255,.16)' },
+      { bg: 'linear-gradient(158deg,oklch(.245 .024 70) 0%,oklch(.152 .016 70) 80%)', glow: 'rgba(255,214,160,.1)' }
+    ];
+    const projects = PROJECTS.map((p, i) => ({
+      ...p, top: (104 + i * 16) + 'px',
+      bg: TINTS[i % TINTS.length].bg, glow: TINTS[i % TINTS.length].glow,
+      stack: p.stack.map(name => ({ name }))
+    }));
+
+    const mk = (label, items, dur, reverse) => ({
+      label, dur,
+      dir: reverse ? 'animation-direction:reverse' : '',
+      items: [...items, ...items].map((name, i) => ({ name, color: i % 3 === 1 ? '#4F8CFF' : i % 3 === 2 ? '#9B9B9B' : '#ffffff' }))
+    });
+
+    return {
+      nodes, messages, projects,
+      experiences: EXPERIENCES.map((e, i) => ({ ...e, tickPct: i * (100 / (EXPERIENCES.length - 1)) })),
+      marquees: [
+        mk('FRONTEND', ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Redux', 'React Query', 'Zustand', 'Tailwind', 'Material UI'], '38s', false),
+        mk('BACKEND', ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST', 'Zod', 'WebSockets'], '32s', true),
+        mk('AI & CLOUD', ['Speech-to-Text', 'LLM Interfaces', 'Voice Capture', 'AWS', 'Azure', 'OAuth', 'JWT'], '36s', false),
+        mk('CRAFT', ['GSAP', 'Three.js', 'Framer Motion', 'Lenis', 'Figma', 'Git', 'Agile'], '30s', true)
+      ],
+      waveBars: Array.from({ length: 26 }, (_, i) => ({
+        dur: (0.55 + (i % 5) * 0.13).toFixed(2) + 's',
+        delay: (i * 0.045).toFixed(2) + 's'
+      })),
+      waveOp: s.calling ? '1' : '.16',
+      callState: s.calling ? 'LIVE' : 'IDLE',
+      callDot: s.calling ? '#4F8CFF' : '#3a3a3a',
+      callGlow: s.calling ? 'rgba(79,140,255,.9)' : 'transparent',
+      callTimer: s.callTimer,
+      callCta: s.calling ? 'End Call' : 'Start Call',
+      callBtnBg: s.calling ? 'transparent' : '#fff',
+      callBtnText: s.calling ? '#fff' : '#050505',
+      callBtnBorder: s.calling ? 'rgba(255,255,255,.2)' : '#fff',
+      toggleCall: this.toggleCall,
+      termLines: s.termLines,
+      focusTerminal: this.focusTerminal,
+      rootRef: this.rootRef,
+      devMode: s.devMode, fps: s.fps, toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

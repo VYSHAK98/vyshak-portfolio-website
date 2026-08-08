@@ -1,0 +1,82 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg);
+  pointer-events: none;
+  animation-duration: 1.15s;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  animation-delay: 2.95s;
+  animation-fill-mode: both;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-duration: 0.45s;
+  animation-timing-function: ease;
+  animation-delay: 2.75s;
+  animation-fill-mode: both;
+}
+
+.ring {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid rgba(79, 140, 255, 0.5);
+  animation-duration: 2.6s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-delay: 0.15s;
+  animation-iteration-count: infinite;
+}
+.ringOuter {
+  composes: ring;
+  border-color: rgba(79, 140, 255, 0.3);
+  animation-delay: 0.9s;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.name {
+  display: flex;
+  gap: 3px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(34px, 5.4vw, 60px);
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+
+.letter {
+  animation-duration: 0.85s;
+  animation-timing-function: var(--ease);
+  animation-fill-mode: both;
+}
+
+.roleWrap {
+  position: relative;
+  height: 18px;
+  width: min(340px, 80vw);
+}
+
+.role {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 11px var(--font-mono);
+  letter-spacing: 0.32em;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
