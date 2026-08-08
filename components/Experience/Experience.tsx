@@ -63,6 +63,14 @@ export default function Experience() {
             ))}
           </div>
         </div>
+
+        {/* mobile-only stand-in for .yearsBlock, see the media query in Experience.module.css */}
+        <div className={styles.yearsBlockMobile}>
+          <div className={styles.years}>
+            3+ <span className={styles.yearsUnit}>years</span>
+          </div>
+          <div className={styles.companiesLabel}>4 COMPANIES</div>
+        </div>
       </div>
     </section>
   );

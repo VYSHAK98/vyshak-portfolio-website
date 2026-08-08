@@ -48,7 +48,7 @@
   display: flex;
   gap: 20px;
   align-items: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 /* ---- track column ---- */
@@ -137,6 +137,12 @@
   font: 400 10px var(--font-mono);
   letter-spacing: 0.16em;
   color: var(--text-muted);
+}
+
+/* shown only below the mobile breakpoint, in place of .yearsBlock —
+   see the media query at the bottom of this file */
+.yearsBlockMobile {
+  display: none;
 }
 
 /* ---- rows column (ordinary document flow, page-scroll driven) ---- */
@@ -238,4 +244,23 @@
   padding: 7px 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 5px;
+}
+
+/* mobile: the "3+ years / 4 COMPANIES" block doesn't fit next to a
+   near-minimum track width, so it moves out of the track column and
+   sits below the whole track+rows layout instead — track and rows
+   stay side by side (never stacked) at every width */
+@media (max-width: 640px) {
+  .trackCol {
+    flex-basis: 34px;
+  }
+  .yearsBlock {
+    display: none;
+  }
+  .yearsBlockMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 28px;
+  }
 }
