@@ -8,7 +8,7 @@ import styles from "./ResumeButton.module.css";
 export default function ResumeButton() {
   return (
     <a
-      href="/Vyshak_Harikumar_Front_End.pdf"
+      href="/Vyshak_Harikumar_Frontend_Resume.pdf"
       download
       target="_blank"
       rel="noopener"
