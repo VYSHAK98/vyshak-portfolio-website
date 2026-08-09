@@ -14,7 +14,7 @@ import Experience from "@/components/Experience/Experience";
 // import AiPipeline from "@/components/AiPipeline/AiPipeline"; // temporarily disabled
 import Work from "@/components/Work/Work";
 import TechStack from "@/components/TechStack/TechStack";
-// import Terminal from "@/components/Terminal/Terminal"; // temporarily disabled
+import Terminal from "@/components/Terminal/Terminal";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import ResumeButton from "@/components/ResumeButton/ResumeButton";
@@ -59,7 +59,7 @@ export default function Home() {
           {/* <AiPipeline /> temporarily disabled */}
           <Work />
           <TechStack />
-          {/* <Terminal /> temporarily disabled */}
+          <Terminal />
           <Contact />
           <Footer />
           <ResumeButton />
