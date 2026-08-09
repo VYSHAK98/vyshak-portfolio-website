@@ -4,11 +4,10 @@
  * JSON-LD, the OG image). Nothing else in the SEO layer should hardcode
  * a domain or hand-typed copy of these values — import from here.
  *
- * Switching to the custom domain later: set NEXT_PUBLIC_SITE_URL in
- * Vercel's project settings (Production environment) to
- * "https://vyshakharikumar.dev" and redeploy. Nothing in the codebase
- * needs to change. Until that's set, SITE_URL falls back to the current
- * Vercel deployment URL below.
+ * The Vercel URL below is the permanent site URL — no custom domain is
+ * planned. If that ever changes, set NEXT_PUBLIC_SITE_URL in Vercel's
+ * project settings (Production environment) and redeploy; nothing in
+ * the codebase needs to change.
  */
 
 const FALLBACK_URL = "https://vyshak-harikumar.vercel.app";
