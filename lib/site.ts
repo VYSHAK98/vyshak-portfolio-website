@@ -57,3 +57,15 @@ export const SOCIAL_LINKS = {
 export const TWITTER_HANDLE = "@your-handle-here";
 
 export const LOCALE = "en_US";
+
+/**
+ * Google Search Console ownership verification (the <meta
+ * name="google-site-verification"> tag). Not a secret — Google
+ * verification codes are meant to be publicly visible in page source —
+ * so it's safe to bake in directly here rather than requiring a
+ * Vercel dashboard env var. Overridable via
+ * NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION if you ever regenerate it
+ * (e.g. re-verifying under a different Search Console account).
+ */
+export const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "x2ZGebMfaQ3wz7WN02TaO_52cPeoybuovtUIkGur6qo";

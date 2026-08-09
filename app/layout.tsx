@@ -1,7 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd/JsonLd";
-import { AUTHOR, LOCALE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL, TWITTER_HANDLE } from "@/lib/site";
+import {
+  AUTHOR,
+  GOOGLE_SITE_VERIFICATION,
+  LOCALE,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  TWITTER_HANDLE,
+} from "@/lib/site";
 
 /**
  * Every value here is sourced from lib/site.ts — change the domain,
@@ -51,10 +61,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // Only rendered once you set the matching env var — see SEO.md
-  // "How to submit the sitemap to Google Search Console".
+  // Bing's tag only rendered once you set the matching env var — see
+  // SEO.md "How to verify ownership". Google's is already verified.
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: GOOGLE_SITE_VERIFICATION,
     other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
       : undefined,

@@ -69,14 +69,9 @@ Note: on-page social links in the UI itself (the Contact section, footer, nav me
 
 ## How to verify ownership
 
-Use the **HTML tag method** (already wired up):
-1. In Search Console, choose "URL prefix" property type, enter `https://vyshak-harikumar.vercel.app`, and pick the **HTML tag** verification method.
-2. Copy the `content="..."` value Google gives you.
-3. Set it as an environment variable: `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<that value>`.
-4. Redeploy. `app/layout.tsx` reads this automatically and only renders the verification meta tag when the variable is set — so nothing ships until you actually have a code.
-5. Click Verify in Search Console.
+**Google: already done.** The verification code is baked into `GOOGLE_SITE_VERIFICATION` in `lib/site.ts` and rendered via the HTML tag method — just click **Verify** in Search Console after deploying. If you ever need to re-verify under a different Google account, get the new `content="..."` value from Search Console and either update the constant in `lib/site.ts` directly, or set it via `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (which takes priority over the baked-in value) and redeploy.
 
-Bing Webmaster Tools works the same way with `NEXT_PUBLIC_BING_SITE_VERIFICATION` (or you can just import your site from Google Search Console directly inside Bing Webmaster Tools, which skips a separate verification step entirely).
+**Bing**: same HTML tag mechanism, via `NEXT_PUBLIC_BING_SITE_VERIFICATION` — set that env var to the value Bing Webmaster Tools gives you and redeploy; the tag only renders once it's set. Or skip this entirely by importing your site from Google Search Console directly inside Bing Webmaster Tools, which verifies both at once.
 
 The DNS TXT record verification method doesn't apply here — that requires owning the domain's DNS, which isn't the case on a shared `vercel.app` subdomain. The HTML tag method above is the one to use.
 
