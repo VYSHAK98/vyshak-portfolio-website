@@ -1,5 +1,9 @@
+"use client";
+
+import { useRef } from "react";
 import styles from "./MobileWork.module.css";
 import { PROJECTS } from "@/lib/data";
+import { useStackCards } from "@/lib/mobile/useStackCards";
 
 const TINTS = [
   { bg: "#0d1220", glow: "rgba(79,140,255,.2)" },
@@ -9,6 +13,9 @@ const TINTS = [
 ];
 
 export default function MobileWork() {
+  const cardsRef = useRef<HTMLDivElement>(null);
+  useStackCards(cardsRef);
+
   return (
     <section id="work" className={styles.section}>
       <div data-rv className={styles.eyebrow}>
@@ -21,53 +28,55 @@ export default function MobileWork() {
         Commercial products built with teams at Verveo, Digiblock and Navneet Toptech.
       </p>
 
-      <div className={styles.cards}>
+      <div ref={cardsRef} className={styles.cards}>
         {PROJECTS.map((p, i) => {
           const tint = TINTS[i % TINTS.length];
           return (
-            <article key={p.title} data-rv className={styles.card} style={{ background: `linear-gradient(160deg, ${tint.bg} 0%, #080808 100%)` }}>
-              <div className={styles.glowBlob} style={{ background: `radial-gradient(circle,${tint.glow},transparent 70%)` }} />
+            <div key={p.title} data-stack-card data-rv className={styles.cardWrap} style={{ top: `${76 + i * 14}px` }}>
+              <article className={styles.card} style={{ background: `linear-gradient(160deg, ${tint.bg} 0%, #080808 100%)` }}>
+                <div className={styles.glowBlob} style={{ background: `radial-gradient(circle,${tint.glow},transparent 70%)` }} />
 
-              <div className={styles.topRow}>
-                <span className={styles.indexNum}>{p.index}</span>
-                <span className={styles.rule} />
-                <span className={styles.sector}>{p.sector}</span>
-              </div>
-
-              <div>
-                <h3 className={styles.title}>{p.title}</h3>
-                <p className={styles.blurb}>{p.blurb}</p>
-              </div>
-
-              <div className={styles.statGrid}>
-                <div className={styles.statCell}>
-                  <div className={styles.statValue}>{p.statA}</div>
-                  <div className={styles.statCaption}>{p.statALabel}</div>
+                <div className={styles.topRow}>
+                  <span className={styles.indexNum}>{p.index}</span>
+                  <span className={styles.rule} />
+                  <span className={styles.sector}>{p.sector}</span>
                 </div>
-                <div className={styles.statCell}>
-                  <div className={styles.statValue}>{p.statB}</div>
-                  <div className={styles.statCaption}>{p.statBLabel}</div>
+
+                <div>
+                  <h3 className={styles.title}>{p.title}</h3>
+                  <p className={styles.blurb}>{p.blurb}</p>
                 </div>
-              </div>
 
-              <div className={styles.roleBox}>
-                <div className={styles.roleLabel}>MY ROLE</div>
-                <div className={styles.roleText}>{p.role}</div>
-              </div>
+                <div className={styles.statGrid}>
+                  <div className={styles.statCell}>
+                    <div className={styles.statValue}>{p.statA}</div>
+                    <div className={styles.statCaption}>{p.statALabel}</div>
+                  </div>
+                  <div className={styles.statCell}>
+                    <div className={styles.statValue}>{p.statB}</div>
+                    <div className={styles.statCaption}>{p.statBLabel}</div>
+                  </div>
+                </div>
 
-              <div className={styles.chipRow}>
-                {p.stack.map((t) => (
-                  <span key={t} className={styles.chip}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+                <div className={styles.roleBox}>
+                  <div className={styles.roleLabel}>MY ROLE</div>
+                  <div className={styles.roleText}>{p.role}</div>
+                </div>
 
-              {/* <div className={styles.actions}>
-                <span className={styles.liveDemo}>Live Demo</span>
-                <span className={styles.caseStudy}>Case Study</span>
-              </div> */}
-            </article>
+                <div className={styles.chipRow}>
+                  {p.stack.map((t) => (
+                    <span key={t} className={styles.chip}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* <div className={styles.actions}>
+                  <span className={styles.liveDemo}>Live Demo</span>
+                  <span className={styles.caseStudy}>Case Study</span>
+                </div> */}
+              </article>
+            </div>
           );
         })}
       </div>

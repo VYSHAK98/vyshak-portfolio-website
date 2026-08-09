@@ -25,9 +25,21 @@
 }
 
 .cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  position: relative;
+  padding-bottom: 90px;
+}
+
+.cardWrap {
+  position: sticky;
+  margin-bottom: 16px;
+  opacity: 0;
+  /* transform is NOT transitioned here (unlike other data-rv reveals) —
+     useStackCards writes transform every frame once the next card
+     starts overlapping this one, and a CSS transition on the same
+     property would fight those per-frame writes, laggily easing
+     toward each quantised step instead of updating immediately like
+     the desktop card stack does. Opacity-only fade-in avoids that. */
+  transition: opacity 0.85s var(--ease);
 }
 
 .card {
@@ -40,9 +52,6 @@
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 30px 60px -40px #000, inset 0 1px 0 rgba(255, 255, 255, 0.07);
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
 
 .glowBlob {
