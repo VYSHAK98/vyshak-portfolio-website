@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import styles from "./Hero.module.css";
 import ParticleField from "@/components/ParticleField/ParticleField";
 
@@ -16,6 +17,28 @@ const TECH_PILLS = [
 
 const FOOTER_TECH = ["REACT", "NEXT.JS", "TYPESCRIPT", "NODE", "THREE.JS", "GSAP"];
 
+/**
+ * Splits a line into per-character spans (data-ch) for the hover bounce
+ * (Engine.initHeroBounce) plus fixed-width spacer spans between words —
+ * a plain " " text node would collapse/vary with the surrounding
+ * inline-block characters, so the gap is its own element instead.
+ */
+function renderChars(text: string) {
+  const words = text.split(" ");
+  const nodes: ReactNode[] = [];
+  words.forEach((word, wi) => {
+    if (wi > 0) nodes.push(<span key={`gap-${wi}`} className={styles.gap} />);
+    [...word].forEach((ch, ci) => {
+      nodes.push(
+        <span key={`${wi}-${ci}`} data-ch className={styles.ch}>
+          {ch}
+        </span>
+      );
+    });
+  });
+  return nodes;
+}
+
 export default function Hero() {
   return (
     <header className={styles.header}>
@@ -33,14 +56,18 @@ export default function Hero() {
             </div>
           </div>
 
-          <h1 className={styles.h1}>
+          <h1 data-hero-h1 className={styles.h1}>
             {H1_LINES.map((line) => (
-              <span key={line.text} className={line.last ? styles.lineWrapLast : styles.lineWrap}>
+              <span
+                key={line.text}
+                data-mask
+                className={line.last ? styles.lineWrapLast : styles.lineWrap}
+              >
                 <span
                   className={`${styles.lineInner} anim-vMask ${line.dim ? styles.lineDim : ""}`}
                   style={{ animationDelay: `${line.delay}s` }}
                 >
-                  {line.text}
+                  {renderChars(line.text)}
                 </span>
               </span>
             ))}

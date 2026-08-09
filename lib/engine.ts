@@ -78,6 +78,7 @@ export class Engine {
     this.initStickyCols();
     this.initMarquees();
     this.initKeys();
+    this.initHeroBounce();
     this.loop();
 
     document.body.style.overflow = "hidden";
@@ -542,6 +543,43 @@ export class Engine {
   focusTerminal() {
     const i = this.root.querySelector<HTMLInputElement>("[data-term-input]");
     if (i) i.focus();
+  }
+
+  /**
+   * Hero headline — letter-by-letter "overshoot bounce" on hover.
+   * mouseenter (not mouseover) so moving between the per-character spans
+   * inside the h1 doesn't retrigger the wave; a busy lock blocks a second
+   * trigger mid-run so overlapping hovers can't desync the stagger.
+   */
+  private initHeroBounce() {
+    if (this.reduce) return;
+    const h1 = this.root.querySelector<HTMLElement>("[data-hero-h1]");
+    if (!h1) return;
+    const chars = [...h1.querySelectorAll<HTMLElement>("[data-ch]")];
+    if (!chars.length) return;
+
+    const STAGGER = 26; // ms between each character's start
+    const DURATION = 780; // ms, matches vOvershoot's .78s
+    let busy = false;
+
+    const onEnter = () => {
+      if (busy) return;
+      busy = true;
+      chars.forEach((c, i) => {
+        c.style.animation = `vOvershoot ${DURATION}ms cubic-bezier(.22,1,.36,1) ${i * STAGGER}ms 1 both`;
+      });
+      const total = (chars.length - 1) * STAGGER + DURATION;
+      this.timers.push(
+        setTimeout(() => {
+          chars.forEach((c) => {
+            c.style.animation = "none";
+          });
+          busy = false;
+        }, total)
+      );
+    };
+    h1.addEventListener("mouseenter", onEnter);
+    this.cleanups.push(() => h1.removeEventListener("mouseenter", onEnter));
   }
 
   /* ---------- easter eggs ---------- */

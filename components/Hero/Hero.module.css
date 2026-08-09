@@ -100,6 +100,13 @@
 .lineDim {
   color: var(--text-secondary);
 }
+.ch {
+  display: inline-block;
+}
+.gap {
+  display: inline-block;
+  width: 0.26em;
+}
 
 .intro {
   margin: clamp(14px, 1.8vw, 24px) 0 0;

@@ -26,20 +26,15 @@
 
 .cards {
   position: relative;
-  padding-bottom: 90px;
+  padding-bottom: 130px;
 }
 
 .cardWrap {
   position: sticky;
-  margin-bottom: 16px;
-  opacity: 0;
-  /* transform is NOT transitioned here (unlike other data-rv reveals) —
-     useStackCards writes transform every frame once the next card
-     starts overlapping this one, and a CSS transition on the same
-     property would fight those per-frame writes, laggily easing
-     toward each quantised step instead of updating immediately like
-     the desktop card stack does. Opacity-only fade-in avoids that. */
-  transition: opacity 0.85s var(--ease);
+  margin-bottom: 22px;
+  /* No scroll-reveal here (unlike other data-rv sections) — sticky cards
+     must already be painted before they pin, or they visibly pop in
+     mid-pin as the reveal's IntersectionObserver threshold fires. */
 }
 
 .card {

@@ -5,7 +5,16 @@
   border-left: 1px solid rgba(255, 255, 255, 0.05);
   border-right: 1px solid rgba(255, 255, 255, 0.05);
   background: var(--bg);
-  overflow-x: hidden;
+  /* overflow-x: hidden (with overflow-y left at its visible default) makes
+     this element its own scroll container per spec — the "one axis hidden"
+     quirk already documented on html in globals.css. That silently breaks
+     every position:sticky descendant (the Work card stack): sticky resolves
+     against the nearest scrollport, which becomes .shell instead of the
+     page, and .shell itself never scrolls, so sticky never engages. `clip`
+     still contains horizontal bleed (marquee rows, negative-margin chip
+     strips) without creating a scroll container. */
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .fixedWrap {

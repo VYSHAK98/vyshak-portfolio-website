@@ -32,7 +32,7 @@ export default function MobileWork() {
         {PROJECTS.map((p, i) => {
           const tint = TINTS[i % TINTS.length];
           return (
-            <div key={p.title} data-stack-card data-rv className={styles.cardWrap} style={{ top: `${76 + i * 14}px` }}>
+            <div key={p.title} data-stack-card className={styles.cardWrap} style={{ top: `${72 + i * 12}px` }}>
               <article className={styles.card} style={{ background: `linear-gradient(160deg, ${tint.bg} 0%, #080808 100%)` }}>
                 <div className={styles.glowBlob} style={{ background: `radial-gradient(circle,${tint.glow},transparent 70%)` }} />
 

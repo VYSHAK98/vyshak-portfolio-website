@@ -115,6 +115,29 @@ button {
 }
 
 /* ===== Keyframes ===== */
+/* Hero headline per-character hover bounce (Engine.initHeroBounce). Applied
+   via element.style.animation directly from JS, not through a CSS Module
+   class — inline styles never go through the CSS Modules build step, so
+   the animation-name-gets-hashed bug that everything else in this file
+   works around doesn't apply here; the literal name "vOvershoot" resolves
+   fine as-is. */
+@keyframes vOvershoot {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  26% {
+    transform: translateY(-0.14em) scaleY(1.07);
+  }
+  54% {
+    transform: translateY(0.05em) scaleY(0.965);
+  }
+  76% {
+    transform: translateY(-0.022em) scaleY(1.012);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
 @keyframes vMask {
   from {
     transform: translateY(115%);
