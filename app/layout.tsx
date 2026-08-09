@@ -3,6 +3,7 @@ import "./globals.css";
 import JsonLd from "@/components/JsonLd/JsonLd";
 import {
   AUTHOR,
+  BING_SITE_VERIFICATION,
   GOOGLE_SITE_VERIFICATION,
   LOCALE,
   SITE_DESCRIPTION,
@@ -61,13 +62,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  // Bing's tag only rendered once you set the matching env var — see
-  // SEO.md "How to verify ownership". Google's is already verified.
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
-    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
-      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
-      : undefined,
+    other: { "msvalidate.01": BING_SITE_VERIFICATION },
   },
   openGraph: {
     title: SITE_TITLE,

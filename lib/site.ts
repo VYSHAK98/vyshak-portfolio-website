@@ -69,3 +69,13 @@ export const LOCALE = "en_US";
  */
 export const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "x2ZGebMfaQ3wz7WN02TaO_52cPeoybuovtUIkGur6qo";
+
+/**
+ * Bing Webmaster Tools ownership verification (the <meta
+ * name="msvalidate.01"> tag) — same token as the BingSiteAuth.xml file
+ * in public/, since Bing accepts either method for the same site.
+ * Same reasoning as GOOGLE_SITE_VERIFICATION above: not a secret, baked
+ * in directly, overridable via NEXT_PUBLIC_BING_SITE_VERIFICATION.
+ */
+export const BING_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "EE7898DE71182D171C498648AAEA91BD";

@@ -71,7 +71,7 @@ Note: on-page social links in the UI itself (the Contact section, footer, nav me
 
 **Google: already done.** The verification code is baked into `GOOGLE_SITE_VERIFICATION` in `lib/site.ts` and rendered via the HTML tag method — just click **Verify** in Search Console after deploying. If you ever need to re-verify under a different Google account, get the new `content="..."` value from Search Console and either update the constant in `lib/site.ts` directly, or set it via `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (which takes priority over the baked-in value) and redeploy.
 
-**Bing**: same HTML tag mechanism, via `NEXT_PUBLIC_BING_SITE_VERIFICATION` — set that env var to the value Bing Webmaster Tools gives you and redeploy; the tag only renders once it's set. Or skip this entirely by importing your site from Google Search Console directly inside Bing Webmaster Tools, which verifies both at once.
+**Bing: already done, two ways at once.** `public/BingSiteAuth.xml` (the XML File method) and `BING_SITE_VERIFICATION` in `lib/site.ts` (the HTML Meta Tag method, `msvalidate.01`) both carry the same token — click **Verify** in Bing Webmaster Tools after deploying. Re-verifying under a different account: update `BING_SITE_VERIFICATION` in `lib/site.ts` (or `NEXT_PUBLIC_BING_SITE_VERIFICATION`, which takes priority) *and* replace `public/BingSiteAuth.xml` with the new file Bing gives you.
 
 The DNS TXT record verification method doesn't apply here — that requires owning the domain's DNS, which isn't the case on a shared `vercel.app` subdomain. The HTML tag method above is the one to use.
 
