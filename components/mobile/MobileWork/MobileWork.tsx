@@ -63,10 +63,10 @@ export default function MobileWork() {
                 ))}
               </div>
 
-              <div className={styles.actions}>
+              {/* <div className={styles.actions}>
                 <span className={styles.liveDemo}>Live Demo</span>
                 <span className={styles.caseStudy}>Case Study</span>
-              </div>
+              </div> */}
             </article>
           );
         })}

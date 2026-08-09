@@ -7,9 +7,9 @@ import shellStyles from "../MobileShell.module.css";
 const NAV_ITEMS = [
   { index: "01", label: "About", href: "#about" },
   { index: "02", label: "Experience", href: "#experience" },
-  { index: "03", label: "AI", href: "#ai" },
-  { index: "04", label: "Work", href: "#work" },
-  { index: "05", label: "Contact", href: "#contact" },
+  // { index: "03", label: "AI", href: "#ai" }, // temporarily disabled, section is commented out
+  { index: "03", label: "Work", href: "#work" },
+  { index: "04", label: "Contact", href: "#contact" },
 ];
 
 export default function MobileHeader() {

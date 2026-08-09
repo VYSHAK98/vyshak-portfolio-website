@@ -8,7 +8,7 @@ import MobileHero from "./MobileHero/MobileHero";
 import MobileNumbers from "./MobileNumbers/MobileNumbers";
 import MobileAbout from "./MobileAbout/MobileAbout";
 import MobileExperience from "./MobileExperience/MobileExperience";
-import MobileAi from "./MobileAi/MobileAi";
+// import MobileAi from "./MobileAi/MobileAi"; // temporarily disabled
 import MobileWork from "./MobileWork/MobileWork";
 import MobileTechStack from "./MobileTechStack/MobileTechStack";
 import MobileContact from "./MobileContact/MobileContact";
@@ -33,7 +33,7 @@ export default function MobileShell() {
       <MobileNumbers />
       <MobileAbout />
       <MobileExperience />
-      <MobileAi />
+      {/* <MobileAi /> temporarily disabled */}
       <MobileWork />
       <MobileTechStack />
       <MobileContact />
