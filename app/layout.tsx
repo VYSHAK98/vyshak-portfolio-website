@@ -1,17 +1,78 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import JsonLd from "@/components/JsonLd/JsonLd";
+import { AUTHOR, LOCALE, SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL, TWITTER_HANDLE } from "@/lib/site";
 
+/**
+ * Every value here is sourced from lib/site.ts — change the domain,
+ * name, description, or social links there, not here.
+ *
+ * `icons` is deliberately NOT set on this object: app/icon.svg and
+ * app/apple-icon.tsx (Next's file-based icon conventions) already
+ * generate those <link> tags automatically. Setting `icons` here too
+ * would emit duplicate tags for the same icons.
+ *
+ * `openGraph.images` / `twitter.images` are deliberately NOT set
+ * either: app/opengraph-image.tsx (file convention) generates the
+ * og:image/twitter:image tags automatically and is picked up by both
+ * Open Graph consumers and Twitter's fallback-to-og:image behavior.
+ * Setting them here too would duplicate that tag.
+ */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vyshakharikumar.dev"),
-  title: "Vyshak Harikumar — Frontend Engineer, AI Interfaces",
-  description:
-    "Enterprise frontend architecture in React, Next.js and TypeScript — voice AI, real-time transcript streaming, and platforms that carry real revenue for real businesses.",
-  authors: [{ name: "Vyshak Harikumar" }],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: AUTHOR.name, url: SITE_URL }],
+  creator: AUTHOR.name,
+  publisher: AUTHOR.name,
+  applicationName: SITE_NAME,
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // Only rendered once you set the matching env var — see SEO.md
+  // "How to submit the sitemap to Google Search Console".
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
   openGraph: {
-    title: "Vyshak Harikumar — Frontend Engineer, AI Interfaces",
-    description:
-      "Enterprise frontend architecture in React, Next.js and TypeScript — voice AI, real-time transcript streaming, and platforms that carry real revenue for real businesses.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    locale: LOCALE,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    creator: TWITTER_HANDLE,
+    site: TWITTER_HANDLE,
   },
 };
 
@@ -25,9 +86,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning>
-        {/* app/icon.svg covers the tab favicon via Next's file convention; apple-icon only
-            accepts raster files there, so the touch icon is wired explicitly here instead. */}
-        <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='v' x1='50' y1='48' x2='132' y2='140' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%234F8CFF'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.5' cy='.18' r='.75'%3E%3Cstop stop-color='%234F8CFF' stop-opacity='.32'/%3E%3Cstop offset='1' stop-color='%234F8CFF' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='180' height='180' fill='%23070707'/%3E%3Crect width='180' height='180' fill='url(%23g)'/%3E%3Cg fill='none' stroke='url(%23v)' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M34 54 62 126 90 54'/%3E%3Cpath d='M115 54v72M146 54v72M115 90h31'/%3E%3C/g%3E%3C/svg%3E" />
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
@@ -42,7 +100,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }
