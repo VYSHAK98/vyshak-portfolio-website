@@ -16,7 +16,10 @@
 }
 
 .bar {
-  z-index: 55;
+  /* Above .overlay (58) so the menu bar — and the toggle button on it —
+     stays visible and on top once the nav overlay opens, instead of the
+     overlay painting over it. */
+  z-index: 59;
   background: linear-gradient(to bottom, #050505 0, rgba(5, 5, 5, 0.94) 60%, transparent 100%);
 }
 .barInner {
